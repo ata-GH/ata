@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+<script type="text/javascript">
+        var canvas=document.getElementById('canvas');
+        canvas.width=1200;
+        canvas.height=1000;
+        var cxt=canvas.getContext('2d');
+
+        /* beginPath();是开始一条新的路径，可以重新这条路径的样式 （样式、线宽、等等）
+         * closePath();是闭合一条路径，但是不会开始一条新的路径
+         * fill();  填充绘制
+         * fillStyle='';设置填充的颜色样式 可以使透明色 rgba(0,0,0,0.8)和hsla(40,82%,33%,0.6)的这种形式
+         * stroke();笔触绘制
+         * strokeStyle='';设置笔触的样式 可以使透明色 rgba(0,0,0,0.8)和hsla(40,82%,33%,0.6)的这种形式
+         * save();保存当前画布的状态 和restore()恢复到画布的保存时的状态   其中这是成对出现一般用于画布的图形变换
+         * ---基本的图形变换---
+         * translate(x,y)位移
+         * rotate(deg)旋转
+         * scale(sx,sy)缩放*/
+
+ //   ---- canvas线条 ----
+        /*
+        cxt.strokeStyle='red';
+        cxt.lineWidth=4;
+        cxt.moveTo(10,10);
+        cxt.lineTo(400,400);
+        cxt.stroke();
+
+        cxt.beginPath(); //开始一条新的路径
+        cxt.moveTo(50,0);
+        cxt.lineTo(450,400);
+        cxt.strokeStyle='blue'; //重设笔触的颜色
+        cxt.lineWidth=6;        //重设笔触的宽度
+        cxt.stroke();
+        */
+
+  // ---- canvas圆弧  arc参数分别是圆心的X轴坐标，圆心的Y轴坐标，半径，起点圆弧的弧度位置，环绕的弧度的位置，顺时针还是逆时针绘制默认是顺时针false -----
+        /*
+        cxt.arc(40,40,20,Math.PI*1,Math.PI *1.5,false);
+        cxt.arc(140,40,20,Math.PI*1.5,Math.PI *2,false);
+        cxt.arc(140,140,20,0,Math.PI *0.5,false);
+        cxt.arc(40,140,20,Math.PI*0.5,Math.PI *1,false);
+        cxt.strokeStyle='blue';
+        cxt.closePath();
+        cxt.stroke();
+        */
+    //  ---- canvas圆弧绘制  cxt.arcTo(x1,y1,x2,y2,radius) 参数分别是第一个点的坐标位置，第二个点的坐标位置，圆弧的半径
+        /*cxt.moveTo(x0,y0);  指定开始点
+         *cxt.arcTo(
+         * x1,y1, 指定控制点
+         * x2,y2, 指点结束点
+         * R) ;指定圆弧的大小 */
+        /*
+        cxt.beginPath();
+        cxt.moveTo(150,150);
+        cxt.lineTo(650,150); //辅助线
+        cxt.lineTo(650,650); //辅助线
+        cxt.strokeStyle='grey';
+        cxt.stroke();
+        // 绘制弧线
+        cxt.beginPath();
+        cxt.moveTo(150,150); //此点到圆弧的起点
+        cxt.arcTo(650,150,650,650,400); //由两个线段组成，第一段由moveTo()的点到圆弧起点，加上圆弧的起点位置到圆弧的终点位置，（圆弧起点在切线位置，结束在切线的位置）
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        */
+        /*
+        cxt.beginPath();
+        cxt.moveTo(400,0);
+        cxt.lineTo(1200,400);
+        cxt.lineTo(400,800);
+        cxt.strokeStyle='grey';
+        cxt.stroke();
+
+        cxt.beginPath();
+        cxt.arc(400,400,400,Math.PI*0.5,Math.PI*1.5,true);
+        cxt.moveTo(400,0);
+        cxt.arcTo(1200,400,400,800,450);
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        */
+  //  ----- 绘制矩形 并位移------
+        /*
+        cxt.rect(10,10,600,600);
+        cxt.strokeStyle='blue';
+        cxt.lineWidth=4;
+        cxt.stroke();
+        cxt.fillStyle='#ff6000';
+        cxt.fill();
+
+
+        cxt.save();  //保存当前画布的状态
+        cxt.beginPath(); //开始一条新的路径
+        cxt.translate(110,110);
+        cxt.rect(10,10,600,600);
+        cxt.stroke();
+        cxt.fillStyle='grey';
+        cxt.fill();
+        cxt.restore(); //恢复到保存画布时的状态
+
+        cxt.beginPath();
+        cxt.translate(140,140);
+        cxt.rect(10,10,600,600);
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        cxt.fillStyle='red';
+        cxt.fill();
+        */
+
+        //   --- 线性渐变 ---
+        /*
+        var grd=cxt.createLinearGradient(10,10,500,0); //确定渐变的起始位置和方向 可是是斜线或者竖直 横直等。
+        grd.addColorStop(0.0,'#fff'); //设置每个转换阶段的颜色
+        grd.addColorStop(0.5,'#ff6000');//设置每个转换阶段的颜色
+        grd.addColorStop(1.0,'#ff00d8');//设置每个转换阶段的颜色
+        cxt.rect(0,0,600,600);  //如果绘制图形的起始坐标大于或者是小于渐变的起始位置或者终点位置 就分别从中间截取或者添加纯色
+        cxt.fillStyle=grd; //讲渐变添加到绘制的图形中
+        cxt.fill();
+        */
+
+        //  ----  径像渐变 ----
+        /*
+        var grd=cxt.createRadialGradient(300,300,100,300,300,300); // 分别是第一个园的圆心X坐标，圆心Y坐标和半径，第二个圆的圆心X坐标，圆心Y坐标和半径。
+        // 是确定起始圆弧的位置到终点圆弧的位置 起始圆弧的大小可以是一个点也可以是一个圆，主要看半径的大小，起始圆弧的颜色就是addcolor的0.0的颜色，终点圆弧外的颜色是addcolor 1.0的颜色
+        grd.addColorStop(0.0,'#fff'); //设置每个转换阶段的颜色
+        grd.addColorStop(0.5,'#ff6000');//设置每个转换阶段的颜色
+        grd.addColorStop(1.0,'#ff00d8');//设置每个转换阶段的颜色
+        cxt.rect(0,0,600,600);  //如果绘制图形的起始坐标大于或者是小于渐变的起始位置或者终点位置 就分别从中间截取或者添加纯色
+        cxt.fillStyle=grd; //讲渐变添加到绘制的图形中
+        cxt.fill();
+        */
+
+        //  ----  使用图片创建画布  ---
+        /*
+        var img=new  Image();
+        img.src='pr-cicle.png';
+        console.log(img);
+        img.onload=function(){  //在img加载后再执行下面打代码
+                var grd=cxt.createPattern(img,'repeat'); //createPattern(img or canvas，repeat-style); no-repeat,repeat-x,repeat-y,repeat
+                //  createPattern()的第一个参数可以是渐变 图形 canvas video
+                cxt.rect(0,0,600,600);  //如果绘制图形的起始坐标大于或者是小于渐变的起始位置或者终点位置 就分别从中间截取或者添加纯色
+                cxt.fillStyle=grd; //讲渐变添加到绘制的图形中
+                cxt.fill();
+        };
+        */
+        //--- canvas 二次貝赛尔曲线 ---
+        /*
+        *cxt.moveTo(x0,y0);起点
+        *cxt.quadraticCurveTo(
+        * x1,y1,  控制点
+        * x2,y2) 终点*/
+        /*
+        var X0 =400,
+            Y0=20,
+            X1=1000,
+            Y1=400,
+            X2=400,
+            R=10,
+            Y2=800,
+            isDown=false,
+            isNext=true,
+            _e;
+        function SBEcontrol(x0,y0,x1,y1,x2,y2){
+            cxt.clearRect(0,0,1200,1000);
+            //   绘制辅助线
+            x0=x0||X0;
+            y0=y0||Y0;
+            x1=x1||X1;
+            y1=y1||Y1;
+            x2=x2||X2;
+            y2=y2||Y2;
+            cxt.beginPath();
+            cxt.moveTo(x0,y0);
+            cxt.lineTo(x1,y1);
+            cxt.lineTo(x2,y2);
+            cxt.strokeStyle='grey';
+            cxt.stroke();
+            //   绘制圆点
+            cxt.beginPath();
+            cxt.arc(x0,y0,10,0,Math.PI*2,false);
+            cxt.strokeStyle='red';
+            cxt.stroke();
+            cxt.beginPath();
+            cxt.arc(x1,y1,10,0,Math.PI*2,false);
+            cxt.stroke();
+            cxt.beginPath();
+            cxt.arc(x2,y2,10,0,Math.PI*2,false);
+            cxt.stroke();
+            //   绘制弧线
+            cxt.beginPath();
+            cxt.moveTo(x0,y0);
+            cxt.quadraticCurveTo(x1,y1,x2,y2);
+            cxt.strokeStyle='blue';
+            cxt.stroke();
+            console.log(x0+':'+y0+'-'+x1+':'+y1+'-'+x2+':'+y2)
+        }
+        SBEcontrol(X0,Y0,X1,Y1,X2,Y2);
+        window.addEventListener('mousemove',function(e){
+            var x=e.clientX, y= e.clientY;
+            if(X1-R<x<X1+R && Y1-R<y<Y1+R){
+                if(isDown){
+                    X1=e.clientX>=0 ?(e.clientX<=1200? e.clientX : 1200) :0;
+                    Y1=e.clientY>=0 ?(e.clientY<=1000? e.clientY : 1000) :0;
+                    SBEcontrol(X0,Y0,X1,Y1,X2,Y2)
+                }
+            }
+        });
+        window.addEventListener('mousedown',function(e){
+            isDown=true;
+
+        });
+        window.addEventListener('mouseup',function(e){
+            isDown=false;
+        })
+        */
+        // ---- canvas 贝塞尔三次曲线
+        /*cxt.bezierCurveTo(x1,y1,x2,y2,x3,y3);
+        *x0,y0表示第一个控制点
+        *x1,y1表示第二个控制点
+        * x0,y0表示终点 */
+        /*
+        cxt.beginPath();
+        cxt.moveTo(200,200);
+        cxt.lineTo(400,400);
+        cxt.lineTo(700,500);
+        cxt.lineTo(400,900);
+        cxt.strokeStyle='grey';
+        cxt.stroke();
+        cxt.beginPath();
+        cxt.moveTo(200,200); //起点
+        cxt.bezierCurveTo(400,400,700,500,400,900);  //
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        */
+        // ---- canvas 文字渲染
+        /*
+        * cxt.font='bold 40px arial';  设置字体样式
+        * cxt.fillText(string,x,y,maxLeng);   参数分别是 输入的文字 文字放置的坐标 文本的最大宽度也可以省略
+        * cxt.strokeText(string,x,y,maxLeng) 参数和上面一样 只不过一个是fill()方法一个是stroke()方法
+        * cxt.text
+        */
+        cxt.font='bold 20px Arial';
+        cxt.moveTo(400,100);
+        cxt.lineTo(400,180);
+        cxt.stroke();
+        cxt.fillStyle='blue';
+        cxt.textAlign='left';
+        cxt.fillText('canvas测试=canvas测试',400,100);
+        cxt.textAlign='center';
+        cxt.fillText('canvas测试=canvas测试',400,140);
+        cxt.textAlign='right';
+        cxt.fillText('canvas测试=canvas测试',400,180);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
