@@ -1,3 +1,3 @@
 #TEST
-##TEST
-SDLJFLSDJLFJSDLFKJ
+## canvas 的系列方法
+### 
