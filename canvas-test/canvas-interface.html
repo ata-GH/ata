@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+
+    </style>
 </head>
 <body>
 <canvas id="canvas"></canvas>
+<ul>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+</ul>
 </body>
 <script type="text/javascript">
         var canvas=document.getElementById('canvas');
@@ -23,7 +31,9 @@
          * ---基本的图形变换---
          * translate(x,y)位移
          * rotate(deg)旋转
-         * scale(sx,sy)缩放*/
+         * scale(sx,sy)缩放
+         * clearRect(x1,y1,x2,y2)清空区域
+         * isPointInPath(x,y)测试当前点是否在规划的路径内*/
 
  //   ---- canvas线条 ----
         /*
@@ -381,17 +391,24 @@
         cxt.font='bold 40px Arial';
         cxt.fillText('canvas的clip()接口学习',200,200);
         */
+        /*
+        var seachLight={x:400,y:400,r:150,vx:Math.random()*5+10,vy:Math.random()*5+10}
         setInterval(function(){
             render();
             updata();
         },40);
         function render(){
+            cxt.clearRect(0,0,1200,1000);
+
             cxt.beginPath();
             cxt.rect(0,0,1200,1000);
             cxt.fillStyle='#000';
             cxt.fill();
             cxt.beginPath();
-            cxt.arc(x,y,100,0,Math.PI*2,false);
+            cxt.save();
+            cxt.arc(seachLight.x,seachLight.y,seachLight.r,0,Math.PI*2);
+            cxt.fillStyle='#fff';
+            cxt.fill();
             cxt.clip();
 
             cxt.beginPath();
@@ -402,19 +419,127 @@
             cxt.fillText('canvas的clip()接口学习',10,410);
             cxt.fillText('canvas的clip()接口学习',10,610);
             cxt.fillText('canvas的clip()接口学习',10,810);
+            cxt.restore();
         }
         function updata(){
-
+            seachLight.x+=seachLight.vx;
+            seachLight.y+=seachLight.vy;
+            if(seachLight.x-seachLight.r<=0){
+                seachLight.vx =-seachLight.vx;
+                seachLight.x=seachLight.r;
+                console.log(1);
+            }
+            if(seachLight.x+seachLight.r>=1200){
+                seachLight.vx =-seachLight.vx;
+                seachLight.x=1200-seachLight.r;
+                console.log(2);
+            }
+            if(seachLight.y-seachLight.r<=0){
+                seachLight.vy =-seachLight.vy;
+                seachLight.y=seachLight.r;
+                console.log(3);
+            }
+            if(seachLight.y+seachLight.r>=1000){
+                seachLight.vy =-seachLight.vy;
+                seachLight.y=1000-seachLight.r;
+                console.log(4);
+            }
         }
-
-
-
-
-
-
-
-
-
+        */
+ // ---canvas路径(非零环绕原则)（的镂空效果）
+        /*
+        cxt.beginPath();
+        cxt.arc(400,400,200,0,Math.PI*2,false);
+        cxt.arc(400,400,120,0,Math.PI*2,true);
+        cxt.closePath();
+        cxt.fillStyle='red';
+        cxt.shadowColor='grey';
+        cxt.shadowOffsetX=6;
+        cxt.shadowOffsetY=6;
+        cxt.shadowBlur=6;
+        cxt.fill();
+        */
+        /*
+        cxt.beginPath();
+        cxt.rect(20,20,620,620);
+        // 绘制逆时针的矩形
+        cxt.fillStyle='blue';
+        cxt.moveTo(100,100);
+        cxt.lineTo(100,320);
+        cxt.lineTo(520,320);
+        cxt.lineTo(520,100);
+        cxt.lineTo(100,100);
+        // 绘制逆时针的三角形
+        cxt.moveTo(200,420);
+        cxt.lineTo(100,600);
+        cxt.lineTo(300,600);
+        cxt.lineTo(200,420);
+        //绘制逆时针的圆形
+        cxt.arc(500,500,100,0,Math.PI*2,true);
+        cxt.shadowColor='grey';
+        cxt.shadowOffsetX=6;
+        cxt.shadowOffsetY=6;
+        cxt.shadowBlur=6;
+        cxt.fill();
+        cxt.closePath();
+        */
+ // --- canvas 的isPointInPath()方法 测试某点是否在绘制的区域里边
+        /*
+        var balls=[];
+        for(var i=0;i<20;i++){
+            var aBall={ x:Math.random()*1200,y:Math.random()*1000,r:Math.random()*50}
+            balls[i]=aBall;
+        }
+        function draw(){
+            for(var i=0;i<balls.length;i++){
+                cxt.beginPath();
+                cxt.fillStyle='blue';
+                cxt.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2,false);
+                cxt.fill();
+            }
+        }
+        draw();
+        //每次 mouseup的时候根据数组在重新绘制
+        canvas.addEventListener('mouseup',function(e){
+            //getBoundingClientRect()是js的函数 表示获取图形的外边框
+            var x= e.clientX-canvas.getBoundingClientRect().left;
+            var y= e.clientY-canvas.getBoundingClientRect().top;
+            for(var i=0;i<balls.length;i++){
+                cxt.beginPath();
+                cxt.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2,false);
+                if(cxt.isPointInPath(x,y)){
+                    cxt.fillStyle='grey';
+                    cxt.fill();
+                }
+            }
+        });
+        */
+ // --- canvas的扩展功能
+        //canvas的接口 CanvasRenderingContext2D
+        //例如 扩展一个绘制三角形的方法
+        /*
+        CanvasRenderingContext2D.prototype.fillAngle=function(x1,y1,x2,y2,x3,y3){
+            this.beginPath();
+            this.moveTo(x1,y1);
+            this.lineTo(x2,y2);
+            this.lineTo(x3,y3);
+            this.lineTo(x1,y1);
+            this.fill();
+        };
+        cxt.fillStyle='blue';
+        cxt.fillAngle(200,200,100,400,300,400);
+        */
+ // --- canvas 的绘图功能
+        //使用darwImage()
+        /*
+        var img=new Image();
+        img.src='images/1.jpg';
+        img.onload=function(){ //等待img加载完成
+            //cxt.drawImage(img,10,10); //在画布上定位图像：
+            //cxt.drawImage(img,0,0,800,500);//在画布上定位图像，并规定图像的宽度和高度：
+            cxt.drawImage(img,20,20,800,500,30,30,900,600);
+        };
+        */
 
 
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<input class="slide" type="range" style="display: block;width:300px;margin-top: 20px;">
+</body>
+<script type="text/javascript">
+    var canvas=document.getElementById('canvas');
+    var cxt=canvas.getContext('2d');
+    canvas.width=1200;
+    canvas.height=800;
+    cxt.strokeRect(0,0,1200,800);
+
+    var img=new Image();
+    var slide=document.getElementsByClassName('slide')[0];
+    var scale=slide.value;
+    console.log(scale);
+    img.src='images/1.jpg';
+    img.onload=function(){
+        cxt.clearRect(0,0,1200,800);
+        var s=scale/50;
+        var preWidth=s*1200;
+        var preHeight=s*800;
+        cxt.drawImage(img,(1200-preWidth)/2,(800-preHeight)/2,preWidth,preHeight);
+    };
+    slide.onmousemove=function(){
+        cxt.clearRect(0,0,1200,800);
+        scale=slide.value;
+        var s=scale/50;
+        var preWidth=s*1200;
+        var preHeight=s*800;
+        cxt.drawImage(img,(1200-preWidth)/2,(800-preHeight)/2,preWidth,preHeight);
+
+    }
+
+
+</script>
+</html>
