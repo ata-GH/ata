@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas imageData</title>
+    <style type="text/css">
+        .btn{
+            float: left;
+            color:white;
+            text-align: center;
+            width: 200px;
+            line-height: 50px;
+            background-color:blue;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" style="float: left;margin-bottom: 20px;"></canvas>
+<canvas id="canvas1" style="float: right"></canvas>
+<div style="clear: both">
+    <a class="btn">图片渲染</a>
+    <a class="btn">黑白渲染</a>
+    <a class="btn">灰度渲染</a>
+    <a class="btn">反色渲染</a>
+    <a class="btn">模糊渲染</a>
+    <a class="btn">马赛克</a>
+</div>
+</body>
+<script type="text/javascript">
+    var v;
+    var canvas=document.getElementById('canvas');
+    var cxt=canvas.getContext('2d');
+    canvas.width=940;
+    canvas.height=585;
+    var img=new Image();
+    img.src='images/1.jpg';
+    img.onload=function(){
+      cxt.drawImage(img,0,0,940,585);
+    };
+    cxt.strokeRect(0,0,940,585);
+
+    var canvas1=document.getElementById('canvas1');
+    var cxt1=canvas1.getContext('2d');
+    canvas1.width=940;
+    canvas1.height=585;
+    cxt1.strokeRect(0,0,940,585);
+    var btn=document.getElementsByClassName('btn');
+    btn[0].onclick=function(){
+        var imgData=cxt.getImageData(0,0,940,585);
+        var pixelData=imgData.data;
+        cxt1.putImageData(imgData,0,0);
+        //cxt1.putImageData(imgData,10,10,50,50,940,585);
+        //像数操作
+
+    };
+    btn[1].onclick=function(){
+        var imgData=cxt.getImageData(0,0,940,585);
+        var pixelData=imgData.data;
+        for(var i=0;i<canvas.width*canvas.height;i++){
+            pixelData[4*i]=0; //0-255红色通道
+            pixelData[4*i+1]=0; //0-255绿色通道
+            //pixelData[4*i+2]=0; //0-255蓝色通道
+            pixelData[4*i+3]=90; //0-100透明度
+        }
+        cxt1.putImageData(imgData,0,0,0,0,940,585);
+    };
+    btn[2].onclick=function(){
+        var imgData=cxt.getImageData(0,0,940,585);
+        var pixelData=imgData.data;
+        for(var i=0;i<canvas.width*canvas.height;i++){
+            //灰色滤镜的简单效果
+             var r=pixelData[4*i];
+             var g=pixelData[4*i+1];
+             var b=pixelData[4*i+3];
+             var grey=r*0.3+g*0.59+b*0.11;//一个比较好的灰度计算公式
+             pixelData[4*i]=grey;
+             pixelData[4*i+1]=grey;
+             pixelData[4*i+2]=grey;
+        }
+        cxt1.putImageData(imgData,0,0,0,0,940,585);
+    };
+    btn[3].onclick=function(){
+        var imgData=cxt.getImageData(0,0,940,585);
+        var pixelData=imgData.data;
+        for(var i=0;i<canvas.width*canvas.height;i++){
+
+            //反色滤镜
+             var r=pixelData[4*i];
+             var g=pixelData[4*i+1];
+             var b=pixelData[4*i+2];
+             pixelData[4*i]=255-r;
+             pixelData[4*i+1]=255-g;
+             pixelData[4*i+2]=255-b;
+        }
+        cxt1.putImageData(imgData,0,0,0,0,940,585);
+    };
+    btn[4].onclick=function(){
+        var tmpData=cxt.getImageData(0,0,940,585);
+        var pixelTmp=tmpData.data;
+        var imgData=cxt.getImageData(0,0,940,585);
+        var pixelData=imgData.data;
+        var blur=3; //模糊效果
+        var totalBlur=(2*blur+1)*(2*blur+1);
+        //模糊滤镜
+        for(var i=blur;i<canvas.width-blur;i++) {
+            for (var j = blur; j < canvas.height - blur; j++) {
+                var totalR = 0, totalG = 0, totalB = 0;
+                for (var dx = -blur; dx <= blur; dx++) {
+                    for (var dy = -blur; dy <= blur; dy++) {
+                        var x = i + dx;
+                        var y = j + dy;
+                        var p = x * canvas.width + y;
+                        totalR += pixelTmp[p * 4];
+                        totalG += pixelTmp[p * 4 + 1];
+                        totalB += pixelTmp[p * 4 + 2];
+                    }
+                }
+                var p = i * canvas.width + j;
+                pixelData[p * 4] = totalR / totalBlur;
+                pixelData[p * 4 + 1] = totalG / totalBlur;
+                pixelData[p * 4 + 2] = totalB / totalBlur ;
+            }
+        }
+        cxt1.putImageData(imgData,0,0,0,0,940,585);
+
+    };
+    btn[5].onclick=function(){
+        //参考imageData
+        var tmpData=cxt.getImageData(0,0,940,585);
+        var pixelTmp=tmpData.data;
+        var imgData=cxt.getImageData(0,0,940,585);
+        var pixelData=imgData.data;
+        var size=12; //
+        var totalBlur=size*size;
+        //模糊滤镜
+        for(var i=0;i<canvas.height;i+=size) {
+            for (var j = 0; j < canvas.width; j+=size) {
+                var totalR = 0, totalG = 0, totalB = 0;
+                for (var dx = 0; dx < size; dx++) {
+                    for (var dy = 0; dy < size; dy++) {
+                        var x = i + dx;
+                        var y = j + dy;
+                        var p = x * canvas.width + y;
+                        totalR += pixelTmp[p * 4];
+                        totalG += pixelTmp[p * 4 + 1];
+                        totalB += pixelTmp[p * 4 + 2];
+                    }
+                }
+                var p = i * canvas.width + j;
+                for (var dx = 0; dx < size; dx++) {
+                    for (var dy = 0; dy < size; dy++) {
+                        var x = i + dx;
+                        var y = j + dy;
+                        var p = x * canvas.width + y;
+                        pixelData[p * 4] = totalR / totalBlur;
+                        pixelData[p * 4 + 1] = totalG / totalBlur;
+                        pixelData[p * 4 + 2] = totalB / totalBlur ;
+                    }
+                }
+
+            }
+        }
+        cxt1.putImageData(imgData,0,0,0,0,940,585);
+    };
+</script>
+</html>

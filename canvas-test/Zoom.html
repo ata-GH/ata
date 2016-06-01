@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<canvas id="zoom" style="display: none;"></canvas>
+</body>
+<script type="text/javascript">
+    var canvas=document.getElementById('canvas');
+    var cxt=canvas.getContext('2d');
+    canvas.width=1200;
+    canvas.height=800;
+    var isMouseDown=false;
+    var img=new Image();
+    img.src='images/1.jpg';
+    img.onload=function(){
+        cxt.drawImage(img,0,0,1200,800);
+        zoomCxt.drawImage(img,0,0,2400,1600);
+
+    };
+    var zoomCanvas=document.getElementById('zoom');
+    var zoomCxt=zoomCanvas.getContext('2d');
+    zoomCanvas.width=2400;
+    zoomCanvas.height=1600;
+//    绘制放大镜效果
+    function darwZoom(is,x,y){
+        cxt.clearRect(0,0,1200,800);
+        cxt.save();
+        cxt.drawImage(img,0,0,1200,800);
+        if(is==true){
+            cxt.beginPath();
+            cxt.arc(x,y,100,0,Math.PI*2);
+            cxt.clip();
+            cxt.drawImage(zoomCanvas,2*x-100,2*y-100,200,200,x-100,y-100,200,200);//img,sx,sy,swidth,sheight,x,y,width,height
+            cxt.restore();
+        }
+    }
+    canvas.onmousedown=function(e){
+        var x=e.clientX-canvas.getBoundingClientRect().left;
+        var y=e.clientY-canvas.getBoundingClientRect().top;
+        isMouseDown=true;
+        darwZoom(true,x,y);
+    };
+    canvas.onmousemove=function(e){
+        if(isMouseDown){
+            var x=e.clientX-canvas.getBoundingClientRect().left;
+            var y=e.clientY-canvas.getBoundingClientRect().top;
+            console.log(x+'-->'+y);
+            darwZoom(true,x,y);
+        }
+    };
+    canvas.onmouseup=function(e){
+        isMouseDown=false;
+        darwZoom(false)
+    };
+    canvas.onmouseout=function(e){
+        isMouseDown=false;
+        darwZoom(false);
+    };
+</script>
+</html>

@@ -7,6 +7,7 @@
 <body>
 <canvas id="canvas"></canvas>
 <input class="slide" type="range" style="display: block;width:300px;margin-top: 20px;">
+<canvas id="water-mark"></canvas>
 </body>
 <script type="text/javascript">
     var canvas=document.getElementById('canvas');
@@ -15,10 +16,19 @@
     canvas.height=800;
     cxt.strokeRect(0,0,1200,800);
 
+    var waterCanvas=document.getElementById('water-mark');
+    var waterCxt=waterCanvas.getContext('2d');
+    waterCanvas.width=300;
+    waterCanvas.height=50;
+    waterCxt.font='bold 30px Arial';
+    waterCxt.textAlign='left';
+    waterCxt.textBaseline='top';
+    waterCxt.fillStyle='rgba(255,255,255,0.5)';
+    waterCxt.fillText("仅供学习",0,0);
+
     var img=new Image();
     var slide=document.getElementsByClassName('slide')[0];
     var scale=slide.value;
-    console.log(scale);
     img.src='images/1.jpg';
     img.onload=function(){
         cxt.clearRect(0,0,1200,800);
@@ -26,6 +36,7 @@
         var preWidth=s*1200;
         var preHeight=s*800;
         cxt.drawImage(img,(1200-preWidth)/2,(800-preHeight)/2,preWidth,preHeight);
+        cxt.drawImage(waterCanvas,900,750);
     };
     slide.onmousemove=function(){
         cxt.clearRect(0,0,1200,800);
@@ -34,7 +45,7 @@
         var preWidth=s*1200;
         var preHeight=s*800;
         cxt.drawImage(img,(1200-preWidth)/2,(800-preHeight)/2,preWidth,preHeight);
-
+        cxt.drawImage(waterCanvas,900,750); //注意此处的参数canvas
     }
 
 

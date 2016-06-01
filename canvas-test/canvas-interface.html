@@ -540,6 +540,19 @@
             cxt.drawImage(img,20,20,800,500,30,30,900,600);
         };
         */
+ // --- canvas 获取图像像数 getImageData()接口
+        /*
+         *var imgData=cxt.getImageData(x,y,width,height);
+         *其中imageData对象包括width，height，data信息*/
+
+ // --- canvas 设置图像数据 putImageData()接口
+        /*
+        * context.putImageData(imageData, x, y);//将一个已知的imageData放回带canvas画布中的x,y的位置。
+        * context.putImageData(imageData,x,y,dirtyX,dirtyY,dirtyW,dirtyH);
+        * 上面的意思是将imageData中的dirtyX,dirtyY位置开始的dirtyW,dirtyH大小的数据绘制到画布的x+dx,y+dy的位置
+        * 其中和drawImage（）有点像但是后面dirtyX,dirtyY的位移会累加前面的x和y。*/
+
+
 
 
 

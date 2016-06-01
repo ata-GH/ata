@@ -246,11 +246,13 @@
         context.drawImage(img,x,y); //在画布上定位图像：
         context.drawImage(img,x,y,width,height);//在画布上定位图像，并规定图像的宽度和高度：
         context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);//(其中sx,sy表示从图片的什么位置开始,swidth,sheight的大小，渲染到x,y的位置，并且渲染的宽高是wight,height)剪切图像，并在画布上定位被剪切的部分：
+        context.drawImage(canvas,x,y);//其中也可以用canvas绘制到context上。方法也有上面三种，参数都是一样。
     </pre>
     <strong>获取图像数据</strong>
     <pre>
           var imageData = context.getImageData(x, y, width, height);
-           var data = imageData.data;
+          //其中imageData包括data，width，height信息
+          var data = imageData.data; //获取data信息
     </pre>
     <strong>遍历像素点</strong>
     <pre>
@@ -279,8 +281,18 @@
             }
           }
     </pre>
-    <strong>设置图像数据</strong>
-    <pre>context.putImageData(imageData, x, y);
+    <strong>绘制图像数据</strong>
+    <pre>
+         context.putImageData(imageData, x, y);//将一个已知的imageData放回带canvas画布中的x,y的位置。
+         context.putImageData(imageData,x,y,dirtyX,dirtyY,dirtyW,dirtyH);//将imageData中的dirtyX,dirtyY位置开始的dirtyW,dirtyH大小的数据绘制到画布的x+dx,y+dy的位置
+         //和drawImage（）有点像但是后面dirtyX,dirtyY的位移会累加前面的x和y。
+         具体图示如下<br/>
+         <img src='images/put.png'>
+    </pre>
+    <strong>创建imageData</strong>
+    <pre>
+        var imgData=context.getImageData();//获取imageDa
+        var imgData=context.createImageData(width,height);//创建imageD
     </pre>
   </li> 
   <li>
