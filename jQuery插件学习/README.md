@@ -44,7 +44,8 @@
             'fontSize':'30px'
         };
         var settings= $.extend({},defaults,optinons);//加一个空对象 保护默认参数
-        //当给extend方法传递一个以上的参数时，它会将所有参数对象合并到第一个里。同时，如果对象中有同名属性时，合并的时候后面的会覆盖前面的。
+        //当给extend方法传递一个以上的参数时，它会将所有参数对象合并到第一个里。同时，如果对象中有同名属性时，
+        合并的时候后面的会覆盖前面的。
         this.text('goodbye!!!'+'\t'+this.attr('class'));
         this.css({
             'color':settings.color,
@@ -111,6 +112,6 @@
     })(jquery，window)
     </pre>
     </li>
-    <li>第三者是通过jquery UI的插件 暂时没关注
+    <li>第三者是通过jquery UI编写的插件 暂时没关注
     </li>
 </ul>
