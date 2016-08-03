@@ -10,6 +10,7 @@
          sayHello:function(name){
              console.log('hello,hao are you?'+'\t'+(name?name:'LiLei'));
          }
+         //后面可以跟多扩展函数
      });
      $.sayHello('HanMeiMei');//hello,hao are you? HanMeiMei
      </pre>
