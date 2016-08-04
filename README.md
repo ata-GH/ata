@@ -15,6 +15,6 @@
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/jQuery插件学习/README.md'>jquery 插件学习</a>
 </li>
 <li>
-<a href='https://github.com/Huaxi100FE/Blog/tree/ata/slide/README.md'>jquery 滑块插件学习</a>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/slider/README.md'>jquery 滑块插件学习</a>
 </li>
 </ul>
