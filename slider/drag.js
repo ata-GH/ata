@@ -33,7 +33,6 @@
                         dragBg.width(maxWidth);
                         dragOK();
                     }
-
                 }
             },
             //鼠标离开时
