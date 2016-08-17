@@ -18,3 +18,9 @@
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/slider/README.md'>jquery 滑块插件学习</a>
 </li>
 </ul>
+<p>js的一些冷知识</p>
+<ul>
+<li>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/something-js/README.md'>js的一些冷知识学习</a>
+</li>
+</ul>
