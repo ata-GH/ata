@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>img延迟加载学习</title>
+</head>
+<style>
+    html,body,ul,li{padding: 0;margin: 0;}
+    ul,li{list-style: none;}
+    img{
+        width: 300px;
+        height: 300px;
+    }
+    li{
+        margin: 20px auto 0 auto;
+        background-color: #eee;
+        width: 300px;
+        height: 350px;
+        border: solid #ccc 1px;
+    }
+    li span{
+        display: block;
+        text-align: center;
+        line-height: 40px;
+        height: 50px;
+    }
+    .big-box{
+        text-align: center;
+        line-height: 30px;
+        font-size: 20px;
+        word-wrap: break-word;
+    }
+</style>
+<body>
+<div class="big-box">
+    很<br/>多<br/>内<br/>容<br/>很<br/>多<br/>内<br/>容<br/>很<br/>
+    多<br/>内<br/>容<br/>很<br/>多<br/>内<br/>容<br/>很<br/>多<br/>
+    内<br/>容<br/>很<br/>多<br/>内<br/>容<br/>很<br/>多<br/>内<br/>
+    容<br/>很<br/>多<br/>内<br/>容<br/>很<br/>多<br/>内<br/>容<br/>
+    容<br/>很<br/>多<br/>内<br/>容<br/>很<br/>多<br/>内<br/>容<br/>
+    很<br/>多<br/>内<br/>容<br/>
+</div>
+<ul>
+    <li>
+        <img class="img_demo" data_src="images/p1.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+    <li>
+        <img class="img_demo" data_src="images/p2.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+    <li>
+        <img class="img_demo" data_src="images/p3.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+    <li>
+        <img class="img_demo" data_src="images/p4.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+    <li>
+        <img class="img_demo" data_src="images/p5.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+    <li>
+        <img class="img_demo" data_src="images/p6.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+    <li>
+        <img class="img_demo" data_src="images/p7.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+    <li>
+        <img class="img_demo" data_src="images/p8.jpg" src="images/2.jpg" alt="图片"/>
+        <span>图片1的相关介绍图片1的相关介绍</span>
+    </li>
+</ul>
+</body>
+<script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    var img_demo=$(".img_demo");
+    var img=new Image();
+    $(window).bind('scroll',function(){
+       setTimeout(function(){
+           var scrollHeight=$('body').scrollTop();
+           var bodyHeight=$(window).height();
+           for(var i=0;i<img_demo.length;i++){
+               var h=img_demo.eq(i).offset().top;
+               if((bodyHeight+scrollHeight)>=(h+10)){
+                   img_demo.eq(i).attr('src',img_demo.eq(i).attr('data_src'));
+               }
+           }
+       },100);
+    });
+})
+</script>
+</html>
