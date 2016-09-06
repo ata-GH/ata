@@ -32,5 +32,5 @@
 </ul>
 <p>img 延迟加载学习</p>
 <ul>
-<li><a href='https://github.com/Huaxi100FE/Blog/tree/ata/lazyLoad-js/README.md'></li>
+<li><a href='https://github.com/Huaxi100FE/Blog/tree/ata/lazyLoad-js/README.md'>img延迟加载学习</a></li>
 </ul>
