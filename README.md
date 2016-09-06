@@ -24,3 +24,9 @@
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/something-js/README.md'>js的一些冷知识学习</a>
 </li>
 </ul>
+<p>grunt 学习</p>
+<ul>
+<li>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/grunt/README.md'>搭建grunt工具</a>
+</li>
+</ul>
