@@ -78,20 +78,29 @@
 <script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
 <script type="text/javascript">
 $(function(){
-    var img_demo=$(".img_demo");
-    var img=new Image();
+    var count=0;
     $(window).bind('scroll',function(){
-       setTimeout(function(){
-           var scrollHeight=$('body').scrollTop();
-           var bodyHeight=$(window).height();
-           for(var i=0;i<img_demo.length;i++){
-               var h=img_demo.eq(i).offset().top;
-               if((bodyHeight+scrollHeight)>=(h+10)){
-                   img_demo.eq(i).attr('src',img_demo.eq(i).attr('data_src'));
-               }
-           }
-       },100);
+        setTimeout(function(){
+            upData();
+        },100);
     });
+    upData();
+    function upData(){
+        var img_demo=$(".img_demo");
+        var scrollHeight=$('body').scrollTop();
+        var bodyHeight=$(window).height();
+        if(img_demo.length<=0){
+            return;
+        }else{
+            for(var i=0;i<img_demo.length;i++){
+                var h=img_demo.eq(i).offset().top;
+                if((bodyHeight+scrollHeight)>=(h+10)){
+                    img_demo.eq(i).attr('src',img_demo.eq(i).attr('data_src'));
+                    $(img_demo).eq(i).removeClass('img_demo');
+                }
+            }
+        }
+    }
 })
 </script>
 </html>
