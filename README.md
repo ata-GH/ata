@@ -34,3 +34,7 @@
 <ul>
 <li><a href='https://github.com/Huaxi100FE/Blog/tree/ata/lazyLoad-js/README.md'>img延迟加载学习</a></li>
 </ul>
+<p>ES6的学习</p>
+<ul>
+<li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/ES6-1/README.md">ES6的解构赋值，let,const关键字的学习</a></li>
+</ul>
