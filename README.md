@@ -12,7 +12,10 @@
 <p>jquery 插件学习</p>
 <ul>
 <li>
-<a href='https://github.com/Huaxi100FE/Blog/tree/ata/jQuery插件学习/README.md'>jquery 插件学习</a>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/jQuery插件学习/README.md'>jquery 插件学习1</a>
+</li>
+<li>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/jQuery插件学习1/README.md'>javascript插件学习2</a>
 </li>
 <li>
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/slider/README.md'>jquery 滑块插件学习</a>
