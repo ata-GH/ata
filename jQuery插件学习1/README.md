@@ -4,19 +4,19 @@
 <ul>
 <li><strong>情况一：纯粹的函数调用</strong><br/>
 <div>这是函数的最通常用法，属于全局性调用，因此this就是代表全局对象Global</div>
-<img src="images/4.png"/><br/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/4.png"/><br/>
 </li>
 <li><strong>情况二：作为对象方法的调用</strong><br/>
 <div>函数可以作为某个对象的方法调用，这是的this就指这个上级对象</div>
-<img src="images/5.png"/><br/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/5.png"/><br/>
 </li>
 <li><strong>情况三：作为构造函数的调用</strong><br/>
 <div>构造函数，就是通过这个函数new一个新的对象(object),这是 this值得就是这个新对象</div>
-<img src="images/6.png"/><br/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/6.png"/><br/>
 </li>
 <li><strong>情况四：apply的调用</strong><br/>
 <div>apply()是函数的一个方法，他的作用是改变函数的调用对象，他的第一个参数就表示改变后的调用这个函数的对象，因此this指的是这第一个参数。</div>
-<img src="images/7.png"/><br/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/7.png"/><br/>
 </li>
 </ul>
 <h3>javascript的闭包学习</h3>
