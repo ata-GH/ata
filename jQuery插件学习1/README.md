@@ -26,11 +26,11 @@
 1,函数内部可以直接读取全局变量<br/>
 2,在函数外部无法自然读取函数内部的局部变量<br/>
 举个简单的闭包栗子：<br/>
-<img src="images/1.png"/><br/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/1.png"/><br/>
 再看个简单的栗子：<br/>
-<img src="images/2.png"/><br/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/2.png"/><br/>
 全局变量相当于在window下面<br/>
-<img src="images/3.png"/><br/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/3.png"/><br/>
 </div>
 <h3>javascript的面向对象编程(一)：封装</h3>
 <div>把'属性'和'方法'，封装成一个对象，甚至从原型对象生成一个实例对象的一些方法</div>
@@ -38,22 +38,22 @@
 <li><strong>一，构造函数模式</strong><br/>
     <div>javascript提供了一个构造函数(constructor)模式。<br/>
     就是一个普通函数，但内部使用了this变量，对构造函数使用new运算符，就能生成实例，并且this变量会绑定在实例对象上</div>
-    <img src="images/8.png"/>
+    <img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/8.png"/>
 </li>
 <li><strong>Prototype模式 </strong><br/>
     <br/>
     <div>1,构造函数的方法很好用，但是如果有相同的属性或者方法就会存在内存的浪费</div>
-    <img src="images/9.png"/>
+    <img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/9.png"/>
     <br/>
     <div>2,javascript规定每一个构造函数都有一个prototype属性，指向另一个对象，这个对象的所有属性和方法，都会被构造函数的实例继承。</div>
-    <img src="images/10.png"/>
+    <img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/10.png"/>
     <div>3,prototype的验证方法(javascript定义了一些辅助方法，帮助大家使用它)</div>
     <div>3.1,isPrototype()用来判断对象和某个实例之间的关系。</div>
-    <img src="images/11.png"/>
+    <img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/11.png"/>
     <div>3.2,hasOwnProperty()用来判断一个属性到底是本地属性，还是继承自prototype对象的属性。</div>
-    <img src="images/12.png"/>
+    <img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/12.png"/>
     <div>3.3,in用来判断某个实例是否含有此属性，不管是本地还是其他还是继承自prototype对象的属性。</div>
-    <img src="images/13.png"/>
+    <img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/13.png"/>
 </li>
 </ul>
 <h3>javascript的面向对象编程(二)：构造函数的继承</h3>
@@ -83,7 +83,7 @@ function Cat(name,color){<br/>
 var cat1=new Cat("大黄","黄色");<br/>
 var cat2=new Cat("小黄","白色");<br/>
 console.log(cat1.species);//动物<br/></pre>
-<img src="images/14.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/14.png"/>
 </li>
 <li><strong>、prototype模式</strong><br/>
 <div>如果'猫'的prototype对象，指向一个Animal的实例，那么所有猫的实例就继承了Animal的属性了</div>
@@ -99,7 +99,7 @@ Cat.prototype.constructor=Cat;<br/>
 //*****(以后都应注意)加了这一行以后，Cat.prototype.constructor指向Animal。<br/>
 var cat1=new Cat("大黄","黄色");<br/>
 console.log(cat1.species);//动物<br/></pre>
-<img src="images/15.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/15.png"/>
 </li>
 <li>
 <strong>、直接继承prototype模式</strong><br/>
@@ -123,7 +123,7 @@ console.log(cat.species);//动物
 Cat.prototype.constructor=Cat;
 console.log(Animal.prototype.constructor);//Cat
 </pre>
-<img src="images/16.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/16.png"/>
 </li>
 <li>
 <strong>、利用空对象作为中介</strong><br/>
@@ -154,7 +154,7 @@ function extend(Child,Parent){
     Child.prototype.constructor=Child;<br/>
 }
 </pre>
-<img src="images/17.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/17.png"/>
 </li>
 <li>
 <strong>、拷贝继承</strong><br/>
@@ -180,7 +180,7 @@ extend(Cat,Animal);<br/>
 var cat1=new Cat("大毛","黄色");<br/>
 console.log(cat1.species);</pre>
 </li>
-<img src="images/18.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/18.png"/>
 </ol>
 <h3>javascript的面向对象编程(三)：非构造函数的继承</h3>
 <ol>
@@ -214,7 +214,7 @@ var Doctor=object(chinese);
 Doctor.career="医生";
 console.log(Doctor.nation);//中国
 </pre>
-<img src="images/19.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/19.png"/>
 </li>
 <li>
 <strong>浅拷贝方法</strong><br/>
@@ -242,7 +242,7 @@ Doctor.birthPlace.push("南充");<br/>
 console.log(Doctor.birthPlace);//["北京","上海","成都","广州","南充"];<br/>
 console.log(chinese.birthPlace);//["北京","上海","成都","广州","南充"];<br/>
 </pre>
-<img src="images/20.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/20.png"/>
 </li>
 <li>
 <strong>深度拷贝方法</strong><br/>
@@ -267,7 +267,7 @@ Doctor.birthPlaces.push('南充');<br/>
 console.log(Doctor.birthPlace);//["北京","上海","成都","广州","南充"]<br/>
 console.log(chinese.birthPlace);//["北京","上海","成都","广州"]
 </pre>
-<img src="images/21.png"/>
+<img src="https://raw.githubusercontent.com/Huaxi100FE/Blog/ata/jQuery插件学习1/images/21.png"/>
 </li>
 </ol>
 
