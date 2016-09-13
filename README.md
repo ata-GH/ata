@@ -9,7 +9,7 @@
 <li><a href='https://github.com/Huaxi100FE/Blog/tree/ata/testTool/README.md'>前端测试工具</a></li>
 <li><a href='https://github.com/Huaxi100FE/Blog/tree/ata/css-selector/README.md'>css选择器的正确使用</a></li>
 </ul>
-<p>jquery 插件学习</p>
+<p>javascript 插件学习</p>
 <ul>
 <li>
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/jQuery插件学习/README.md'>jquery 插件学习1</a>
