@@ -44,3 +44,7 @@
 <ul>
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/ES6-1/README.md">ES6的解构赋值，let,const关键字的学习</a></li>
 </ul>
+<p>H5游戏集合</p>
+<ul>
+<li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/H5 9月第三周/README.md">H5 9月第三周</a></li>
+</ul>
