@@ -26,6 +26,9 @@
 <li>
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/something-js/README.md'>js的一些冷知识学习</a>
 </li>
+<li>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/js快速排序法/README.md'>js一种快速排序法</a>
+</li>
 </ul>
 <p>grunt 学习</p>
 <ul>
