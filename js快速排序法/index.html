@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+
+</body>
+<script>
+    function quickSort(arr){
+        /*如果数组长度只有一个，返回arr*/
+        if(arr.length<=1){return arr;}
+        /*第一步：找到基数(pivot)*/
+        var pivotIndex=Math.ceil(arr.length/2);
+        var pivot=arr[pivotIndex];
+        var left=[],right=[];
+        /*第二步：开始比较，如果小于基数，移到基准左边，若大于基数，移到基准右边*/
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]<arr[pivotIndex]){
+                left.push(arr[i]);
+            }
+            else if(arr[i]>arr[pivotIndex]){
+                right.push(arr[i]);
+            }
+        }
+        /*第三步：不断重复前面两步*/
+        return quickSort(left).concat([pivot],quickSort(right));
+    }
+    console.log(quickSort([99,7,6,5,4,66,44,3,2,45]));//[2, 3, 4, 5, 6, 7, 44, 45, 66, 99]
+</script>
+</html>
