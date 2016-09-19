@@ -47,4 +47,5 @@
 <p>H5游戏集合</p>
 <ul>
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/H5 9月第三周/README.md">H5 9月第三周</a></li>
+<li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/H5-loading/README.md">H5加载loading</a></li>
 </ul>
