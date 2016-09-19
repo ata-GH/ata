@@ -26,6 +26,9 @@
 <li>
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/something-js/README.md'>js的一些冷知识学习</a>
 </li>
+<li>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/js快速排序法/README.md'>js一种快速排序法</a>
+</li>
 </ul>
 <p>grunt 学习</p>
 <ul>
@@ -40,4 +43,8 @@
 <p>ES6的学习</p>
 <ul>
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/ES6-1/README.md">ES6的解构赋值，let,const关键字的学习</a></li>
+</ul>
+<p>H5游戏集合</p>
+<ul>
+<li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/H5 9月第三周/README.md">H5 9月第三周</a></li>
 </ul>
