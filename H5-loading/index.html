@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="loader_info"></div>
+</body>
+<script>
+    (function(){
+        /*判断传入的@arr是否是数组 返回值false or  arr*/
+        function isArray(arr){
+            return Object.prototype.toString.call(arr) === '[object Array]';
+        }
+
+        /*
+         * @param imgList 要加载的图片地址列表，['aa/asd.png','aa/xxx.png']
+         * @param callback 每成功加载一个图片之后的回调，并传入“已加载的图片总数/要加载的图片总数”表示进度
+         * @param timeout 每个图片加载的超时时间，默认为5s
+         */
+        var loader=function(imgList, callback, timeout){
+            timeout=timeout||500;
+            callback=typeof (callback) ==='function' && callback;
+            imgList=isArray(imgList) && imgList ||[];
+
+            var total=imgList.length,
+                loaded= 0,
+                images=[],
+                _on=function(){
+                   loaded <total && (++loaded,callback && callback(loaded/total));
+                };
+            /*_on函数时判断图片是否加载  并执行callback函数*/
+            for(var i=0;i<total;i++){
+                images[i]=new Image();
+                images[i].onload=images[i].onerror=_on;
+                images[i].src=imgList[i];
+            }
+            /*
+             * 如果timeout * total时间范围内，仍有图片未加载出来（判断条件是loaded < total），通知外部环境所有图片均已加载
+             * 目的是避免用户等待时间过长
+             */
+            setTimeout(function(){
+                loaded <total && (loaded=total,callback && callback(loaded/total));
+            },timeout*total);
+        };
+        window.imgloader=loader;
+    })()
+</script>
+<script>
+    /*使用方式 其中回掉函数可以重新完善*/
+    var arr=['http://170.240.100.147/wstmall/yishu/347/121/01.jpg', 'http://170.240.100.147/wstmall/yishu/347/117/117_01.jpg', 'http://170.240.100.147/wstmall/yishu/347/124/124_01.jpg'];
+    imgloader(arr, function(percentage){
+        var percentT = percentage * 100;
+        document.getElementById('loader_info').innerHTML=('Loading ' + (parseInt(percentT)) + '%');
+        if(percentage==1){
+            document.getElementById('loader_info').innerHTML=('加载完毕！！！');
+        }
+        console.log(percentage);
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
