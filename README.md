@@ -39,7 +39,7 @@
 <p>gulp 学习</p>
 <ul>
 <li>
-<a href='https://github.com/Huaxi100FE/Blog/tree/ata/gulp/README.md'>搭建grunt工具</a>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/gulp/README.md'>搭建gulp工具</a>
 </li>
 </ul>
 <p>img 延迟加载学习</p>
