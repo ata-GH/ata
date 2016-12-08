@@ -1,0 +1,71 @@
+@import "css3.less";
+.cf(){ //清除浮动
+	min-height: 1px;zoom:1;
+	&:after{content:"020"; display: block;height: 0; clear: both;visibility:hidden}
+}
+.omit(){ //溢出省略
+	white-space: nowrap; overflow: hidden;word-wrap:normal;-o-text-overflow:ellipsis;text-overflow:ellipsis;
+}	
+.trs(){ //css3运动
+	.transition(all 0.2s ease-in-out);
+}
+.trs500(){ //css3运动
+	.transition(all 0.5s ease-in-out);
+}
+@url:"images/"; //
+@bcolor: #ccc;
+@width:1200px;
+
+.center(@width){
+  width: @width;
+  margin: 0 auto;
+};
+.bi(@image:none){background-image:url("@{url}@{image}")}
+.bg(@image:none,@repeat:no-repeat,@position:0 0,@color:transparent){background:@color url("@{url}@{image}") @repeat @position; background-size: contain;}
+.triangle(){ width: 0; height: 0; font-size: 0; line-height: 0; vertical-align: middle;border-color:transparent;border-style:solid}
+.lh(@h){ line-height: @h; height: @h;}
+.btn(@color, @bor-ra:2px, @fcolor: @color / 2){ 
+	.q-grad(@color, top, 0.1); color: @fcolor; border:1px solid @color / 1.2; cursor: pointer; .border-radius(@bor-ra);.transition(all 0.2s ease);
+	&:hover{
+		background-color: @color / 1.1;
+	}
+	&:active{
+		background-image: none;
+	}
+}
+.list(@show:4, @width:100%, @line:10px){
+	width: @width; overflow: hidden;
+	ul{
+		.cf; margin-right: -@line;  background-color: red
+	}
+	li{
+		float:left; width: (@width - (@show - 1) * @line)  / @show; margin-right: @line;margin-bottom:  @line;
+		img{ max-width: 100%; }
+	}
+}
+.imgBox(@w, @h){
+	text-align: center; display: inline-block; width: @w; height: @h;
+	i{ height: @h; display: inline-block; vertical-align: middle;}
+	img{ max-width: @w; max-height: @h; vertical-align: middle;}
+}
+.di(){
+	display: inline-block;*display: inline; *zoom: 1; vertical-align: middle;
+}
+.op(@n:100){
+	opacity: @n / 100; filter:alpha(opacity=@n);
+}
+@tcolor:#F60;
+
+
+.positionL(@pos_state,@top,@left){
+	position: @pos_state;
+	top: @top;
+	left:@left;
+}
+.positionR(@pos_state,@top,@right){
+	position: @pos_state;
+	top: @top;
+	right: @right;
+}
+
+.flexbox() {  display: -webkit-box;  display: -moz-box;  display: -ms-flexbox;  display: -webkit-flex;  display: flex;  }

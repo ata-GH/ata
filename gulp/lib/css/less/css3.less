@@ -1,0 +1,78 @@
+// _________________________ css 3 函数 _________________________
+// ====================================== *** 圆角 *** ======================================
+.border-radius(@radius:5px){-webkit-border-radius:@radius;-moz-border-radius:@radius;border-radius:@radius;}
+// ====================================== *** 阴影 *** ======================================
+.box-shadow(@shadow){-webkit-box-shadow:@shadow;-moz-box-shadow:@shadow;box-shadow:@shadow;} // 盒子阴影
+.text-shadow(@shadow){-webkit-text-shadow:@shadow;text-shadow:@shadow} // 文字阴影
+// ====================================== *** 变形 *** ======================================
+// 旋转
+.rotate(@rotate:0){-webkit-transform:rotate(@rotate);-moz-transform:rotate(@rotate);transform:rotate(@rotate)}
+.rotateX(@rotate:0){-webkit-transform:rotateX(@rotate);-moz-transform:rotateX(@rotate);transform:rotateX(@rotate)}
+.rotateY(@rotate:0){-webkit-transform:rotateY(@rotate);-moz-transform:rotateY(@rotate);transform:rotateY(@rotate)}
+// 缩放
+.scale(@scaleX:0,@scaleY:0){-webkit-transform:scale(@scaleX,@scaleY);-moz-transform:scale(@scaleX,@scaleY);transform:scale(@scaleX,@scaleY)}
+.scaleX(@scaleX:0){-webkit-transform:scale(@scaleX);-moz-transform:scale(@scaleX);transform:scale(@scaleX)}
+.scaleY(@scaleY:0){-webkit-transform:scale(@scaleY);-moz-transform:scale(@scaleY);transform:scale(@scaleY)}
+// 坐标定位
+.translate(@x:0,@y:0){-webkit-transform:translate(@x,@y);-moz-transform:translate(@x,@y);transform:translate(@x,@y)}
+// 倾斜
+.skew(@skewX:0,@skewY:0){-webkit-transform:skew(@skewX,@skewY);-moz-transform:skew(@skewX,@skewY);transform:skew(@skewX,@skewY)}
+// 矩阵变形
+.matrix(@a:0,@b:0,@c:0,@d:0,@e:0,@f:0){-webkit-transform:matrix(@a,@b,@c,@d,@e,@f);-moz-transform:matrix(@a,@b,@c,@d,@e,@f);transform:matrix(@a,@b,@c,@d,@e,@f)}
+// 组合式变形
+.transform(@transform){
+	-webkit-transform:@transform;
+	   -moz-transform:@transform;
+	        transform:@transform;
+}
+// ====================================== *** 设置元素被查看位置的视图 *** ======================================
+.perspective(@value:0){perspective:@value; -webkit-perspective:@value}
+// ====================================== *** 过渡 *** ======================================
+.transition(@transition:all 1s .001s linear) {will-change: all;-webkit-transition:@transition;-moz-transition:@transition;-ms-transition:@transition;transition:@transition}
+// ====================================== *** 动画 *** ======================================
+.animation(@animation:myame 2s .001s linear both){-webkit-animation:@animation;-moz-animation:@animation;animation:@animation}
+.delay(@time:0){
+  -webkit-animation-delay: @time;
+     -moz-animation-delay: @time;
+      -ms-animation-delay: @time;
+       -o-animation-delay: @time;
+          animation-delay: @time;
+}
+
+// ====================================== *** 渐变 *** ======================================
+.grad(@origin: left, @start: #ffffff, @stop: #000000) {
+	background-color: (@start +  @stop) / 2;
+	background-image: -webkit-linear-gradient(@origin, @start, @stop);
+	background-image: -moz-linear-gradient(@origin, @start, @stop);
+	background-image: -o-linear-gradient(@origin, @start, @stop);
+	background-image: -ms-linear-gradient(@origin, @start, @stop);
+	background-image: linear-gradient(@origin, @start, @stop);
+}
+// ====================================== *** 快速渐变 *** ======================================
+.q-grad(@bgcolor:red, @origin: left, @alpha: 0.2) {
+	background-color: @bgcolor;
+	background-image: -webkit-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -moz-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -o-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -ms-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+}
+// ====================================== *** 图片倒影 *** ======================================
+.reflect (@length: 50%, @opacity: 0.2, @leve: 0){
+	-webkit-box-reflect: below @leve -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(@length, transparent), to(rgba(255,255,255,@opacity)));
+}
+// ====================================== *** 模糊 *** ======================================
+.filter(@blur:2px){
+	-webkit-filter:blur(@blur);
+	   -moz-filter:blur(@blur);
+	        filter:blur(@blur);
+}
+// ====================================== *** 关联属性 *** ======================================
+// 变形原点
+.to(@origin){-webkit-transform-origin:@origin;-moz-transform-origin:@origin;transform-origin:@origin}
+// 透视原点
+.po(@origin){-webkit-perspective-origin:@origin;-moz-perspective-origin:@origin;perspective-origin:@origin}
+// 隐藏内容的背面
+.bv(@v:hidden){-webkit-backface-visibility:@v;-moz-backface-visibility:@v;backface-visibility:@v}
+// 呈现 3D
+.d3(@d3:preserve-3d){-webkit-transform-style:@d3;moz-transform-style:@d3;transform-style:@d3}

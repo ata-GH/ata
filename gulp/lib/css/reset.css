@@ -1,0 +1,99 @@
+html {
+  outline: 0;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-appearance: none;
+}
+body {
+  color: #52585d;
+  background-color: #EEE;
+  font-family: Tahoma, Arial, Roboto, 'Droid Sans', 'Helvetica Neue', 'Droid Sans Fallback', 'Heiti SC', sans-self;
+  font-size: 0.6rem;
+  position: relative;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+menu,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a,
+i,
+em {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: normal;
+  text-decoration: none;
+  color: #616161;
+}
+a {
+  cursor: pointer;
+}
+img {
+  vertical-align: middle;
+  border: none;
+}
+ol,
+ul {
+  list-style: none;
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-weight: normal;
+}
+h2 {
+  font-weight: normal;
+}
+h3 {
+  font-weight: normal;
+}
+q:before,
+q:after {
+  content: '';
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+html {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
