@@ -36,6 +36,12 @@
 <a href='https://github.com/Huaxi100FE/Blog/tree/ata/grunt/README.md'>搭建grunt工具</a>
 </li>
 </ul>
+<p>gulp 学习</p>
+<ul>
+<li>
+<a href='https://github.com/Huaxi100FE/Blog/tree/ata/gulp/README.md'>使用gulp工具</a>
+</li>
+</ul>
 <p>img 延迟加载学习</p>
 <ul>
 <li><a href='https://github.com/Huaxi100FE/Blog/tree/ata/lazyLoad-js/README.md'>img延迟加载学习</a></li>
