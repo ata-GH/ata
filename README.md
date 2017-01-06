@@ -3,6 +3,8 @@
 <ul>
 <li> <a href='https://github.com/Huaxi100FE/Blog/tree/ata/canvas-test/README.md'>canvas 的系列方发</a>
 </li>
+<li> <a href='https://github.com/Huaxi100FE/Blog/tree/ata/canvas1/loading.html'>canvas 动画学习系列1</a>
+</li>
 </ul>
 <p>前端测试工具及其优化方法</p>
 <ul>
