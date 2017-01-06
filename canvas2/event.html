@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas学习</title>
+</head>
+<body>
+<canvas id="event"></canvas>
+</body>
+<script>
+    var canvas=document.getElementById('event'),
+        context=canvas.getContext('2d');
+    canvas.width=400;
+    canvas.height=400;
+    function event(){
+        var str='0123456789ABCDEF';
+        var rgb='#';
+        for(var i=0;i<6;i++){
+            var num=Math.floor(Math.random()*str.length);
+            rgb=rgb.concat(str.charAt(num));
+        }
+        canvas.style.backgroundColor=rgb;
+    }
+    /*添加监听事件*/
+    canvas.addEventListener('click',event,false);
+    /*移除监听事件*/
+//    canvas.removeEventListener('click',event,false);
+</script>
+</html>
