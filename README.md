@@ -5,6 +5,8 @@
 </li>
 <li> <a href='https://github.com/Huaxi100FE/Blog/tree/ata/canvas1/loading.html'>canvas 动画学习系列1</a>
 </li>
+<li> <a href='https://github.com/Huaxi100FE/Blog/tree/ata/canvas2/README.md'>canvas 动画学习系列2事件</a>
+</li>
 </ul>
 <p>前端测试工具及其优化方法</p>
 <ul>
