@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas波形运动</title>
+</head>
+<body>
+<canvas id="bxMove" style="border: 1px solid blue;"></canvas>
+</body>
+<script src="js/ball.js"></script>
+<script>
+    /*平滑运动*/
+/*
+window.onload=function(){
+    var canvas=document.getElementById('bxMove'),
+            context=canvas.getContext('2d');
+    var ball=new Ball();
+    ball.x=canvas.width/2;
+    ball.y=canvas.height/2;
+    var angle= 0,
+        range=100;//振幅
+    (function drawFrame(){
+        window.requestAnimationFrame(drawFrame);
+        context.clearRect(0,0,canvas.width,canvas.height);
+        ball.x=canvas.width/2+Math.sin(angle)*range; //相对于-100到+100的正旋函数
+        angle+=0.05;
+        ball.draw(context);
+    }());
+
+};
+*/
+/*线性运动*/
+/*window.onload=function(){
+    var canvas=document.getElementById('bxMove'),
+            context=canvas.getContext('2d');
+    canvas.width=600;
+    canvas.height=600;
+    var ball=new Ball();
+    ball.x=canvas.width/2;
+    ball.y=canvas.height/2;
+
+    var angle= 0,
+        range= 50,
+        xSpeed= 1,
+        ySpeed=0.05;
+
+    (function drawFrame(){
+        window.requestAnimationFrame(drawFrame);
+        context.clearRect(0,0,canvas.width,canvas.height);
+        if(ball.x>=canvas.width+ball.radius){
+            ball.x=-ball.radius;
+            console.log(ball.x);
+        }else{
+            ball.x+=xSpeed;
+        }
+        ball.y=canvas.height/2+Math.sin(angle)*range;
+        angle+=0.05;
+        ball.draw(context);
+    }());
+}*/
+
+    /*脉冲运动*/
+    /*window.onload=function(){
+        var canvas=document.getElementById('bxMove'),
+                context=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=600;
+
+        var angle= 0,
+            range=.5,
+            speed=.05,
+            centerScale=1;
+        var ball=new Ball();
+        ball.x=canvas.width/2;
+        ball.y=canvas.height/2;
+
+        (function drawFrame(){
+            window.requestAnimationFrame(drawFrame);
+            context.clearRect(0,0,canvas.width,canvas.height);
+            ball.scaleX=ball.scaleY=centerScale+Math.sin(angle)*range;
+            angle+=speed;
+            ball.draw(context);
+        }())
+    }*/
+    /*正圆运动*/
+    /*window.onload=function(){
+        var canvas=document.getElementById('bxMove'),
+                context=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=600;
+
+        var ball=new Ball();
+
+        var angle= 90,//
+            dy= 0,
+            dx= 0,
+            centerX=canvas.width/ 2,
+            centerY=canvas.height/ 2,
+            radius=100,
+            speed=.05;
+        (function drawFrame(){
+            window.requestAnimationFrame(drawFrame);
+            context.clearRect(0,0,canvas.width,canvas.height);
+
+            dy=Math.sin(angle)*radius;
+            dx=Math.cos(angle)*radius;
+            ball.x=centerX+dx;
+            ball.y=centerY+dy;
+            ball.draw(context);
+            angle-=speed;
+        }())
+    };*/
+    /*椭圆运动*/
+    window.onload=function(){
+        var canvas=document.getElementById('bxMove'),
+                context=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=600;
+
+        var ball=new Ball();
+
+        var angle= 0,
+            centerX=canvas.width/ 2,
+            centerY=canvas.height/ 2,
+            speed=.05,
+            radiusX=100,
+            radiusY=50;
+        (function drawFrame(){
+            window.requestAnimationFrame(drawFrame);
+            context.clearRect(0,0,canvas.width,canvas.height);
+            ball.x=centerX+Math.cos(angle)*radiusX;
+            ball.y=centerY+Math.sin(angle)*radiusY;
+            ball.draw(context);
+            angle+=speed;
+        }())
+    };
+
+    /*直线运动 运用沟谷定理*/
+</script>
+</html>
