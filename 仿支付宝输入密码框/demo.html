@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var deviceWidth = document.documentElement.clientWidth;
+        if (deviceWidth > 720) deviceWidth = 720;
+        document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*卡劵列表 css--begin*/
+
+        .verfi_main {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .verfi_main_content {
+            width: 5.8rem;
+            height: 3.6rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border-radius: .1rem .1rem;
+        }
+
+        .verfi_tittle {
+            font-size: .32rem;
+            color: #232323;
+            padding-top: .25rem;
+            line-height: .5rem;
+            text-align: center;
+        }
+
+        .verfi_tips_text1 {
+            line-height: .55rem;
+            color: #7b7979;
+            font-size: .28rem;
+            text-align: center;
+        }
+
+        .verfi_input_block {
+            padding: .2rem .4rem;
+            position: relative;
+        }
+        .i-text {
+            font-size: .3rem;
+            background-color: transparent;
+            border: none;
+            color: #232323;
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 1.1rem;
+            left: 0;
+            -webkit-user-select: initial;
+            z-index: 10;
+        }
+        .sixDigitPassword {
+            min-height: 1px;
+            zoom: 1;
+            overflow: hidden;
+        }
+        .secret_input_first {
+            margin-left: 0;
+        }
+        .secret_input {
+            font-size: .8rem;
+            font-style: normal;
+            width: 1rem;
+            height: 1.1rem;
+            border-radius: 4px 4px;
+            border: 1px solid #7b7979;
+            text-align: center;
+            box-sizing: border-box;
+            line-height: 1.1rem;
+            float: left;
+            margin-left: .2rem;
+            color: inherit;
+        }
+        i.active {
+            background: url("pritor.gif") no-repeat center;
+        }
+    </style>
+</head>
+<body>
+<div class="verfi_main" style="display: block;">
+    <div class="verfi_main_content">
+        <h5 class="verfi_tittle">输入核销码</h5>
+        <p class="verfi_tips_text1">请将手机递给商家用于核销</p>
+        <div class="verfi_input_block">
+            <input minlength="4" maxlength="4" tabindex="1" id="payPassword_rsainput" class="ui-input i-text" oncontextmenu="return false" onpaste="return false" oncopy="return false" oncut="return false" autocomplete="off" value="" type="tel">
+            <div class="sixDigitPassword" tabindex="0">
+                <i class="secret_input secret_input_first"></i>
+                <i class="secret_input"></i>
+                <i class="secret_input"></i>
+                <i class="secret_input"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+    /*核销弹出框 js*/
+    $(".useNow_btn").on('click',function(){
+        $(".verfi_main").css('display','block');
+    });
+    $("#payPassword_rsainput").on('click',function(){
+        var input_v=$(this).val();
+        var input_arr=input_v.split('');
+        $(".secret_input").removeClass('active').eq(input_arr.length).addClass('active');
+    });
+    $("#payPassword_rsainput").keyup(function() {
+        var inp_v = $(this).val();
+        var input_arr=inp_v.split('');
+        var inp_l = input_arr.length;
+        console.log(inp_l);
+        for( var x = 0; x<4; x++) {
+            console.log(inp_l);
+            $(".secret_input").eq( inp_l ).addClass("active").siblings("i").removeClass("active");//添加光标和数字
+            if(x<inp_l){
+                $(".secret_input").eq( x ).text(input_arr[x]);
+            }
+            $(".secret_input").eq(inp_l-1).nextAll().text('');
+            if( inp_l == 0) {$(".secret_input").eq( 0 ).addClass("active").siblings("i").removeClass("active");
+                $(".secret_input").eq(inp_l).text('');
+            }
+            else if( inp_l == 4) {$(".secret_input").removeClass("active");}
+        }
+        console.log(inp_v);
+    });
+    $(".verfi_main").on('click',function(e){
+        $(this).hide();
+        e.preventDefault();
+    });
+    $(".verfi_main_content").on('click',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+    });
+</script>
+</body>
+</html>
