@@ -63,6 +63,7 @@
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/H5 9月第三周/README.md">H5 9月第三周</a></li>
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/H5-loading/README.md">H5加载loading</a></li>
 </ul>
+<p>其他云云</p>
 <ul>
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/window.history%E5%AF%B9%E8%B1%A1%E5%AD%A6%E4%B9%A0">window.history对象学习</a></li>
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/%E4%BB%BF%E6%94%AF%E4%BB%98%E5%AE%9D%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E6%A1%86">仿支付宝输入密码框</a></li>
