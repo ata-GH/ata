@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垂直居中 容器</title>
+    <style>
+        .document-flex{
+            width: 80%;
+            margin: 0 auto;
+            height: 500px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            border: 1px solid darkmagenta;
+        }
+        .footer,.header{
+            height: 100px;
+            flex: none;
+            background-color: azure;
+        }
+        .main{
+            flex: auto;
+            background-color: darkgoldenrod;
+        }
+        /*--示例2--*/
+        .horizontal-container {
+            margin: 50px auto;
+            display: flex;
+            width: 600px;
+            flex-flow: row wrap;
+        }
+        .fixed-size {
+            flex: none;
+            width: 200px;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!--示例1-->
+<div class="document-flex">
+    <div class="header">header</div>
+    <div class="main">main</div>
+    <div class="footer">footer</div>
+</div>
+
+<!--示例2-->
+<div id="container" class="horizontal-container">
+    <div class="fixed-size">Element 1</div>
+    <div class="fixed-size">Element 2</div>
+    <div class="fixed-size">Element 3</div>
+</div>
+<button id="increase-size">Increase container size</button>
+<button id="decrease-size">Decrease container size</button>
+<script>
+    var width = 600;
+    document.getElementById('increase-size').onclick=function() {
+        width += 200;
+        if (width > 600) width = 600;
+        document.getElementById('container').style.width = (width + "px");
+    };
+
+    document.getElementById('decrease-size').onclick=function() {
+        width -= 200;
+        if (width < 200) width = 200;
+        document.getElementById('container').style.width = (width + "px");
+    }
+</script>
+</body>
+</html>
