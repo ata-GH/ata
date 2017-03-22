@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源加载 学习</title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+        }
+        .loading{
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            font-size: 1em;
+        }
+
+        .tips{
+            padding-top: 40%;
+            font-size: 14px;
+        }
+        .progress {
+            width: 30em;
+            height: 4em;
+            margin: 0 auto ;
+            border: 1px solid #fff;
+        }
+        .progress span {
+            display: block;
+            width: 0;
+            height: 4em;
+            background: #fff;
+        }
+        .num{
+            text-align: center;
+            color: #fff;
+            font-size: 3em;
+        }
+        .num em{
+            font-style: normal;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+<!--加载loading-->
+<div class="loading">
+    <p class="tips"></p>
+    <p class="progress"><span></span></p>
+    <p class="num"><em>0</em>%</p>
+</div>
+<!--内容-->
+<div>content</div>
+<script src="//cdn.bootcss.com/jquery/3.0.0/core.js"></script>
+<script>
+    var path='./',
+        loaders = {
+            img:[
+                {src: path + "images/cp1.png"},
+                {src: path + "images/cp2.png"},
+                {src: path + "images/cp3.png"},
+                {src: path + "images/cp4.png"},
+                {src: path + "images/cp5.png"},
+                {src: path + "images/cp6.png"},
+                {src: path + "images/cp7.png"},
+                {src: path + "images/cp_sc_1.png"},
+                {src: path + "images/cp_sc_2.png"},
+                {src: path + "images/cp_sc_3.png"},
+                {src: path + "images/cp_sc_4.png"},
+                {src: path + "images/cp_sc_5.png"},
+                {src: path + "images/cp_sc_6.png"},
+                {src: path + "images/cp_sc_7.png"},
+                {src: path + "images/cp_sc_8.png"},
+                {src: path + "images/cp_sc_9.png"}
+            ],
+            audio:[
+                {src: path + "images/audio.mp3"}
+            ]
+        };
+    /*资源加载---begin*/
+    function loadSprite(src, callback) {
+        var sprite = new Image();
+        sprite.onload = callback;
+        sprite.src = src;
+    }
+    function loadAudio(src, callback) {
+        var audio = new Audio(src);
+        audio.onloadedmetadata = callback;
+        audio.src = src;
+    }
+    var imageLoadCount = 0,
+        audioLoadCount = 0,
+        comp1 = loaders.img.length,
+        comp2 = loaders.audio.length;
+
+    $.each(loaders.img, function(index,item) {
+        loadSprite(item.src,function(){ imageLoadCount++;})
+    });
+    $.each(loaders.audio, function(index,item) {
+        loadAudio(item.src,function(){ audioLoadCount++;})
+    });
+    /*加载图片超时*/
+    var timerOut=setTimeout(function(){
+        clearInterval(complete);
+        $(".loading").remove();
+    },(comp1+comp2)*300);
+    var complete=setInterval(function() {
+        if(imageLoadCount == comp1 && audioLoadCount == comp2){
+            $(".progress span").css("width","100%");
+            $(".loading p").find("em").html(100);
+            clearInterval(complete);
+            clearTimeout(timerOut);
+            $(".loading").remove();
+        }
+        else {
+            var num = parseInt((imageLoadCount + audioLoadCount)*100/(comp1 + comp2));
+            if(num<100){
+                $(".loading p").find("em").html(num);
+                $(".progress span").css("width",num+"%");
+            }
+        }
+    },100);
+    /*资源加载---end*/
+</script>
+</body>
+</html>
