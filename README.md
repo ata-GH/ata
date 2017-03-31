@@ -57,6 +57,10 @@
 <p>ES6的学习</p>
 <ul>
 <li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/ES6-1/README.md">ES6的解构赋值，let,const关键字的学习</a></li>
+<li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/ES6-1">ES6-1</a>学习
+</li>
+<li><a href="https://github.com/Huaxi100FE/Blog/tree/ata/ES6-2">ES6-2</a>学习2
+</li>
 </ul>
 <p>H5游戏集合</p>
 <ul>
