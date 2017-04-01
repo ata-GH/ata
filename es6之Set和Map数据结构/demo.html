@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript" charset="UTF-8">
+    /*利用Set属性 来生成一个长度为十的不重复的数组*/
+
+    function mkArr(length,supNum,subNum){
+        let arr=new Set();
+        while(arr.size<length){
+            arr.add(Math.floor(Math.random()*(subNum-supNum)+supNum));
+        }
+//        return [...arr];
+        return Array.from(arr);
+    }
+    var arr=mkArr(10,5,25);
+    console.log(arr);
+</script>
+<!--<script type="text/javascript" charset="UTF-8" src="js/Set.js"></script>-->
+<!--<script type="text/javascript" charset="UTF-8" src="js/WeakSet.js"></script>-->
+<script type="text/javascript" charset="UTF-8" src="js/Map.js"></script>
+</body>
+</html>
