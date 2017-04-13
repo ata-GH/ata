@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" charset="UTF-8">
+        function bigLoop(){
+            var worker=new Worker('loop.js');
+            console.log(worker);
+            worker.onmessage=function(e){
+                console.log(e,e.data);
+                alert(e.data);
+            };
+        }
+        function sayHello(){
+            console.log('Hello sir....');
+            alert("Hello sir...." );
+        }
+    </script>
+</head>
+<body>
+<input type="button" onclick="bigLoop();" value="Big Loop" />
+<input type="button" onclick="sayHello();" value="Say Hello" />
+</body>
+</html>

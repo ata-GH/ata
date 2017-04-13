@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹幕效果</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <script charset="UTF-8">
+        var dvicetWidth=document.documentElement.clientWidth;
+        dvicetWidth=dvicetWidth>640?640:dvicetWidth;
+        document.documentElement.style.fontSize=dvicetWidth/6.4+'px';
+    </script>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family:"Microsoft YaHei",Helvetica,"Hiragino Sans GB",Arial,sans-serif;
+        }
+        .body{
+            width: 100%;
+            height: 100%;
+            background-color: beige;
+        }
+        .dm_block{
+            width: 100%;
+            height: 5rem;
+            display: inline-block;
+            position: relative;
+        }
+        p{
+            /*-webkit-transition: all 0.1s linear;*/
+            /*transition: all 0.1s linear;*/
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            font-size: .25rem;
+            line-height: .5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <div class="dm_block" id="dm_block"></div>
+</div>
+<script type="text/javascript" charset="UTF-8">
+    /*屏幕弹幕效果*/
+    var txt=[
+        '微信web开发者工具',
+        '欢迎使用微信Web开发者工具',
+        '通过该工具，你可以更加便捷的调试微信上的网页',
+        '你可以使用自己的微信号来调试微信网页授权',
+        '你可以调试、检验页面的JS-SDK相关功能与权限',
+        '你可以使用 X5 Blink 调试',
+        '你可以利用集成的Chrome DevTools'
+    ];
+    window.onload = function() {
+        function create(){
+            var len = txt.length;
+            var newNodNe = document.createElement("p");
+            var obj = document.getElementById("dm_block");
+            newNodNe.innerHTML = txt[parseInt(Math.random() *len)];
+            newNodNe.classList.add("message"+parseInt(Math.random() *7));
+            newNodNe.style.top = Math.random() * (obj.offsetHeight/70 + 1 ) + "rem";
+            newNodNe.style.left = "7.5rem";
+            obj.appendChild(newNodNe);
+        }
+
+        for(var i = 0; i < txt.length; i++) {
+            setTimeout(function(){
+                create();
+            },1000+i*2000);
+        }
+        setTimeout(function(){
+            var timer = setInterval(move, 10);
+        },1000);
+
+        var newArr = [];
+        function move() {
+            var arr = document.querySelectorAll("#dm_block p");
+            for(var i = 0; i < arr.length; i++) {
+                newArr.push(6.4);
+                arr[i].style.left = newArr[i] + "rem";
+                newArr[i] = newArr[i]-0.01;
+                if(newArr[i] < -6.4 ) {
+                    newArr[i] = 6.4;
+                    //create();
+                }
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

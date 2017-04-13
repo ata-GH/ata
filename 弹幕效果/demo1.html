@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<form action="弹幕效果.html" method="post">
+    <p>
+        <label for="firstname">first name: </label>
+        <input type="text" id="firstname" name="firstname" value=""><br />
+        <label for="lastname">last name: </label>
+        <input type="text" id="lastname" name="lastname" value=""><br />
+        <label for="email">email: </label>
+        <input type="text" id="email" name="email" value=""><br>
+        <input type="radio" name="sex" value="male"> Male<br>
+        <input type="radio" name="sex" value="female"> Female<br>
+        <input type="checkbox" name="ah" value="看书">看书<br/>
+        <input type="checkbox" name="ah" value="打麻将">打麻将<br/>
+        <input type="checkbox" name="ah" value="跑步">跑步<br/>
+        <input type="checkbox" name="ah" value="插画">插画<br/>
+        <input type="submit" value="send"> <input type="reset">
+    </p>
+</form>
+<!--svg-->
+<svg xml:space="default" id="svgElem">
+    <rect height="150" width="200" fill="blue"></rect>
+</svg>
+<br/>
+<br/>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+        <mi>A</mi>
+        <mo>=</mo>
+        <mfenced open="[" close="]">
+            <mtable>
+                <mtr>
+                    <mtd><mi>x</mi></mtd>
+                    <mtd><mi>y</mi></mtd>
+                </mtr>
+                <mtr>
+                    <mtd><mi>z</mi></mtd>
+                    <mtd><mi>w</mi></mtd>
+                </mtr>
+            </mtable>
+        </mfenced>
+    </mrow>
+</math>
+<br/>
+<br/>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+        <mrow>
+            <msup>
+                <mi>x</mi>
+                <mn>2</mn>
+            </msup>
+            <mo>+</mo>
+            <mrow>
+                <mn>4</mn>
+                <mo>⁢</mo>
+                <mi>x</mi>
+            </mrow>
+            <mo>+</mo>
+            <mn>4</mn>
+        </mrow>
+        <mo>=</mo>
+        <mn>0</mn>
+    </mrow>
+</math>
+</body>
+<script type="text/javascript" charset="utf-8">
+    (function(){
+        var geolocation= navigator.geolocation;
+        geolocation.getCurrentPosition(showLocation,handlerError);
+        function showLocation(postion){
+            var latitude= postion.coords.latitude,
+                longitude= postion.coords.longitude;
+            console.log(latitude,longitude);
+        }
+        function handlerError(err){
+            console.log(err.code,err.message);
+        }
+    }());
+</script>
+</html>
