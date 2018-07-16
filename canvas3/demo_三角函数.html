@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas三角函数</title>
+</head>
+<body>
+<canvas id="MathFun" style="border: 1px solid blue"></canvas>
+</body>
+<script type="text/javascript" src="js/place.js"></script>
+<script type="text/javascript" src="js/arrow.js"></script>
+<script>
+    var canvas=document.getElementById('MathFun');
+    var context=canvas.getContext('2d');
+    /*设置canvas的宽高*/
+    canvas.width=400;
+    canvas.height=400;
+
+
+    var centerX=canvas.width/ 2,
+        centerY=canvas.height/2;
+
+    var arrow=new Arrow();
+    var mouse=place.captureMouse(canvas);
+    arrow.x=centerX;
+    arrow.y=centerY;
+
+    (function drawFrame(){
+        window.requestAnimationFrame(drawFrame);
+        context.clearRect(0,0,canvas.width,canvas.height);
+        /*获取x,y*/
+        var dx=mouse.x-arrow.x,
+            dy=mouse.y-arrow.y;
+        /*设置旋转角度*/
+        arrow.rotation=Math.atan2(-dx,dy);
+        arrow.draw(context);
+    }())
+
+
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo2</title>
+</head>
+<body>
+<h1>window.history对象学习 demo</h1>
+<button id="button">ajax 请求</button>
+<script>
+    var state={
+        title:'demo1',
+        url:'demo1.html',
+        value:{
+            test:'test',
+            value:'demo1'
+        }
+    };
+    //      某项操作下 讲此项推入历史记录
+    document.getElementById('button').onclick=function(){
+        document.title=state.title;
+        window.history.pushState(state,'demo1','demo1.html');
+    };
+
+    window.addEventListener('popstate',function(e){
+        if(history.state){
+            var state= e.state;
+            console.log(state);
+        }
+    },false);
+
+
+</script>
+</body>
+</html>

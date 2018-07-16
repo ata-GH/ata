@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景文字掉落效果</title>
+</head>
+<body>
+<canvas id="moving" style="background-color: #000"></canvas>
+</body>
+<script>
+    var canvas=document.getElementById('moving'),
+        context=canvas.getContext('2d');
+    window.onload=function(){
+        canvas.width=window.innerWidth;
+        canvas.height=window.innerHeight;
+        /* 获取变量*/
+        var clearColor='rgba(0,0,0,.1)',
+            font_size=16,
+            clums=canvas.width/font_size,
+            worldText="0123456789qwertyuiopasdfghjklzxcvbnm,./;'\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?";
+            worlds=worldText.split('');
+            drops=[];
+        for(var i=0;i<clums;i++){
+            drops[i]=1;
+        }
+        /*绘制文字*/
+        function draw(){
+            context.save();
+            context.fillStyle = '#fff';
+            context.font = font_size + "px arial";
+            //核心
+            for (var i = 0; i < drops.length; i++){
+                var text = worlds[Math.floor(Math.random() * worlds.length)];
+                context.fillText(text, i * font_size, drops[i] * font_size);
+                if (drops[i] * font_size > canvas.height && Math.random() > 0.98){
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+            context.restore();
+        }
+        //动画循环
+        (function drawFrame(){
+            window.requestAnimationFrame(drawFrame);
+            context.fillStyle = clearColor;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            draw();
+        }());
+        /*resize*/
+        function resize(){
+            canvas.width=window.innerWidth;
+            canvas.height=window.innerHeight;
+        }
+        canvas.addEventListener('resize',resize);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

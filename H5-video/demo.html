@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video学习</title>
+</head>
+<body>
+<h2 style="text-align: center;">video 兼容性学习</h2>
+<video controls loop preload="auto" id="video">
+    <source src="img/movie.ogg" type="video/ogg">
+    <source src="img/movie.mp4" type="video/mp4">
+</video>
+<br/>
+<button id="play">播放</button>
+<button id="stop">暂停</button>
+<script>
+    window.onload=function(){
+        var media=document.getElementById('video')
+        document.getElementById('play').onclick=function(){
+            media.play();
+        };
+        document.getElementById('stop').onclick=function(){
+           media.pause();
+            console.log(media.error);
+            console.log(media.loop);
+        };
+    }
+</script>
+</body>
+</html>

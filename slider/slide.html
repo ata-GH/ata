@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<style>
+
+    .drag-box{
+        width: 300px;
+        height: 50px;
+        background-color: #a5a5a5;
+        line-height: 50px;
+        position: relative;
+    }
+    .drag{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50px;
+        height: 48px;
+        border: solid #333 1px;
+        background-color: #6b6b6b;
+        color: #fff;
+        line-height: 48px;
+        cursor: move;
+        text-align: center;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+    }
+    .drag-text{
+        height: 50px;
+        width: 300px;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+    }
+    .drag-bg{
+        position: absolute;
+        left: 0;
+        height: 50px;
+        background-color: #d1d1d1;
+    }
+</style>
+<body>
+<h5>拖动滑块验证jquery插件</h5>
+<!--滑块盒子-->
+<div class="drag-box"></div>
+</body>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<script src="drag.js"></script>
+</html>

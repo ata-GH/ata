@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style type="text/css">
+        .blur-img{
+            display: block;
+            float: left;
+            /*margin: 0 auto;*/
+            width: 930px;
+            height: 570px;
+        }
+        .next{
+            /*css3的模糊效果*/
+            filter: blur(10px);
+            -moz-filter: blur(10px);
+            -ms-filter: blur(10px);
+            -webkit-filter: blur(10px);
+            -o-filter: blur(10px);
+        }
+        .next1{
+            /*css3的灰度效果*/
+            filter: grayscale(1);
+            -moz-filter: grayscale(1);
+            -ms-filter: grayscale(1);
+            -webkit-filter: grayscale(1);
+            -o-filter: grayscale(1);
+        }
+        .next2{
+            /*css3的褐色效果*/
+            filter: sepia(1);
+            -moz-filter: sepia(1);
+            -ms-filter: sepia(1);
+            -webkit-filter:sepia(1);
+            -o-filter: sepia(1);
+        }
+        .next3{
+            /*css3的饱和度效果*/
+            filter: saturate(3);
+            -moz-filter: saturate(3);
+            -ms-filter: saturate(3);
+            -webkit-filter: saturate(3);
+            -o-filter:saturate(3);
+        }
+        .next4{
+            /*css3的色相旋转效果*/
+            filter: hue-rotate(90deg);
+            -moz-filter: hue-rotate(90deg);
+            -ms-filter:hue-rotate(90deg);
+            -webkit-filter: hue-rotate(90deg);
+            -o-filter: hue-rotate(90deg);
+        }
+        .next5{
+            /*反色*/
+            filter: invert(1);
+            -moz-filter:invert(1);
+            -ms-filter:invert(1);
+            -webkit-filter: invert(1);
+            -o-filter:invert(1);
+        }
+        .next6{
+            /*透明度*/
+            filter: opacity(0.5);
+            -moz-filter: opacity(0.5);
+            -ms-filter: opacity(0.5);
+            -webkit-filter: opacity(0.5);
+            -o-filter: opacity(0.5);
+        }
+        .next7{
+            /*亮度*/
+            filter: brightness(0.5);
+            -moz-filter: brightness(0.5);
+            -ms-filter: brightness(0.5);
+            -webkit-filter:brightness(0.5);
+            -o-filter: brightness(0.5);
+        }
+        .next8{
+            filter: contrast(2);
+            /*对比度*/
+            -moz-filter:contrast(2);
+            -ms-filter: contrast(2);
+            -webkit-filter: contrast(2);
+            -o-filter:contrast(2);
+        }
+        .next9{
+            /*阴影*/
+            filter: drop-shadow(10px 10px);
+            -moz-filter: drop-shadow(10px 10px);
+            -ms-filter: drop-shadow(10px 10px);
+            -webkit-filter:drop-shadow(10px 10px);
+            -o-filter: drop-shadow(10px 10px);
+        }
+        .btn{
+            float: left;
+            width: 160px;
+            line-height: 30px;
+            background-color: blue;
+            color: #fff;
+            text-align: center;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<!--<canvas id="canvas"></canvas>-->
+<img class="blur-img" src="images/1.jpg">
+<img src="images/1.jpg" class="blur-img">
+<div style="clear: both;padding-top: 20px;">
+    <a class="btn">模糊</a>
+    <a class="btn">灰度效果</a>
+    <a class="btn">褐色效果</a>
+    <a class="btn">饱和度</a>
+    <a class="btn">色相旋转</a>
+    <a class="btn">反色</a>
+    <a class="btn">透明度</a>
+    <a class="btn">亮度</a>
+    <a class="btn">对比度</a>
+    <a class="btn">阴影</a>
+</div>
+</body>
+<script type="text/javascript">
+    var btn=document.getElementsByClassName('btn');
+    var img=document.getElementsByClassName('blur-img');
+    btn[0].onclick=function(){
+        img[1].className='blur-img next';
+    };
+    btn[1].onclick=function(){
+        img[1].className='blur-img next1';
+    };
+    btn[2].onclick=function(){
+        img[1].className='blur-img next2';
+    };
+    btn[3].onclick=function(){
+        img[1].className='blur-img next3';
+    };
+    btn[4].onclick=function(){
+        img[1].className='blur-img next4';
+    };
+    btn[5].onclick=function(){
+        img[1].className='blur-img next5';
+    };
+    btn[6].onclick=function(){
+        img[1].className='blur-img next6';
+    };
+    btn[7].onclick=function(){
+        img[1].className='blur-img next7';
+    };
+    btn[8].onclick=function(){
+        img[1].className='blur-img next8';
+    };
+    btn[9].onclick=function(){
+        img[1].className='blur-img next9';
+    };
+
+//    var canvas=document.getElementById('canvas');
+//    var cxt=canvas.getContext('2d');
+//    canvas.width=400;
+//    canvas.height=541;
+//    var img=new Image();
+//    img.src='images/canvas-composite-operations.png';
+//    img.onload=function(){
+//
+//    }
+
+</script>
+</html>

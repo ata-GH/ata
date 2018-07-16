@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo2</title>
+</head>
+<body>
+<h1>demo2</h1>
+<button id="button">按钮操作</button>
+<script>
+    var state={
+        title:'demo1',
+        url:'demo1.html',
+        data:'data'
+    };
+    /*某项操作下 替换当前页面的记录*/
+    document.getElementById('button').onclick=function(){
+        history.replaceState(state,'demo1','demo1.html')
+    };
+    if(history.pushState){
+        window.addEventListener('popstate',function(e){
+           console.log(e);
+        });
+    }
+</script>
+</body>
+</html>

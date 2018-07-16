@@ -1,0 +1,38 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "this is gulp test",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gulp/gulpjs.git"
+  },
+  "keywords": [
+    "gulp/index.js"
+  ],
+  "author": "ata",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gulp/gulpjs/issues"
+  },
+  "homepage": "https://github.com/gulp/gulpjs#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-css-spriter": "^0.3.3",
+    "gulp-file-include": "^1.0.0",
+    "gulp-imagemin": "^3.1.0",
+    "gulp-jshint": "^2.0.2",
+    "gulp-less": "^3.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.10",
+    "jshint": "^2.9.4"
+  }
+}

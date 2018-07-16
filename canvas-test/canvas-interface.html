@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<ul>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+</ul>
+</body>
+<script type="text/javascript">
+        var canvas=document.getElementById('canvas');
+        canvas.width=1200;
+        canvas.height=1000;
+        var cxt=canvas.getContext('2d');
+
+        /* beginPath();是开始一条新的路径，可以重新这条路径的样式 （样式、线宽、等等）
+         * closePath();是闭合一条路径，但是不会开始一条新的路径
+         * fill();  填充绘制
+         * fillStyle='';设置填充的颜色样式 可以使透明色 rgba(0,0,0,0.8)和hsla(40,82%,33%,0.6)的这种形式
+         * stroke();笔触绘制
+         * strokeStyle='';设置笔触的样式 可以使透明色 rgba(0,0,0,0.8)和hsla(40,82%,33%,0.6)的这种形式
+         * save();保存当前画布的状态 和restore()恢复到画布的保存时的状态   其中这是成对出现一般用于画布的图形变换
+         * ---基本的图形变换---
+         * translate(x,y)位移
+         * rotate(deg)旋转
+         * scale(sx,sy)缩放
+         * clearRect(x1,y1,x2,y2)清空区域
+         * isPointInPath(x,y)测试当前点是否在规划的路径内*/
+
+ //   ---- canvas线条 ----
+        /*
+        cxt.strokeStyle='red';
+        cxt.lineWidth=4;
+        cxt.moveTo(10,10);
+        cxt.lineTo(400,400);
+        cxt.stroke();
+
+        cxt.beginPath(); //开始一条新的路径
+        cxt.moveTo(50,0);
+        cxt.lineTo(450,400);
+        cxt.strokeStyle='blue'; //重设笔触的颜色
+        cxt.lineWidth=6;        //重设笔触的宽度
+        cxt.stroke();
+        */
+
+  // ---- canvas圆弧  arc参数分别是圆心的X轴坐标，圆心的Y轴坐标，半径，起点圆弧的弧度位置，环绕的弧度的位置，顺时针还是逆时针绘制默认是顺时针false -----
+        /*
+        cxt.arc(40,40,20,Math.PI*1,Math.PI *1.5,false);
+        cxt.arc(140,40,20,Math.PI*1.5,Math.PI *2,false);
+        cxt.arc(140,140,20,0,Math.PI *0.5,false);
+        cxt.arc(40,140,20,Math.PI*0.5,Math.PI *1,false);
+        cxt.strokeStyle='blue';
+        cxt.closePath();
+        cxt.stroke();
+        */
+
+ //  ---- canvas圆弧绘制  cxt.arcTo(x1,y1,x2,y2,radius) 参数分别是第一个点的坐标位置，第二个点的坐标位置，圆弧的半径
+        /*cxt.moveTo(x0,y0);  指定开始点
+         *cxt.arcTo(
+         * x1,y1, 指定控制点
+         * x2,y2, 指点结束点
+         * R) ;指定圆弧的大小 */
+        /*
+        cxt.beginPath();
+        cxt.moveTo(150,150);
+        cxt.lineTo(650,150); //辅助线
+        cxt.lineTo(650,650); //辅助线
+        cxt.strokeStyle='grey';
+        cxt.stroke();
+        // 绘制弧线
+        cxt.beginPath();
+        cxt.moveTo(150,150); //此点到圆弧的起点
+        cxt.arcTo(650,150,650,650,400); //由两个线段组成，第一段由moveTo()的点到圆弧起点，加上圆弧的起点位置到圆弧的终点位置，（圆弧起点在切线位置，结束在切线的位置）
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        */
+        /*
+        cxt.beginPath();
+        cxt.moveTo(400,0);
+        cxt.lineTo(1200,400);
+        cxt.lineTo(400,800);
+        cxt.strokeStyle='grey';
+        cxt.stroke();
+
+        cxt.beginPath();
+        cxt.arc(400,400,400,Math.PI*0.5,Math.PI*1.5,true);
+        cxt.moveTo(400,0);
+        cxt.arcTo(1200,400,400,800,450);
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        */
+
+  //  ----- 绘制矩形 并位移------
+        /*
+        cxt.rect(10,10,600,600);
+        cxt.strokeStyle='blue';
+        cxt.lineWidth=4;
+        cxt.stroke();
+        cxt.fillStyle='#ff6000';
+        cxt.fill();
+
+
+        cxt.save();  //保存当前画布的状态
+        cxt.beginPath(); //开始一条新的路径
+        cxt.translate(110,110);
+        cxt.rect(10,10,600,600);
+        cxt.stroke();
+        cxt.fillStyle='grey';
+        cxt.fill();
+        cxt.restore(); //恢复到保存画布时的状态
+
+        cxt.beginPath();
+        cxt.translate(140,140);
+        cxt.rect(10,10,600,600);
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        cxt.fillStyle='red';
+        cxt.fill();
+        */
+
+ //   --- 线性渐变 ---
+        /*
+        var grd=cxt.createLinearGradient(10,10,500,0); //确定渐变的起始位置和方向 可是是斜线或者竖直 横直等。
+        grd.addColorStop(0.0,'#fff'); //设置每个转换阶段的颜色
+        grd.addColorStop(0.5,'#ff6000');//设置每个转换阶段的颜色
+        grd.addColorStop(1.0,'#ff00d8');//设置每个转换阶段的颜色
+        cxt.rect(0,0,600,600);  //如果绘制图形的起始坐标大于或者是小于渐变的起始位置或者终点位置 就分别从中间截取或者添加纯色
+        cxt.fillStyle=grd; //讲渐变添加到绘制的图形中
+        cxt.fill();
+        */
+
+ //  ----  径像渐变 ----
+        /*
+        var grd=cxt.createRadialGradient(300,300,100,300,300,300); // 分别是第一个园的圆心X坐标，圆心Y坐标和半径，第二个圆的圆心X坐标，圆心Y坐标和半径。
+        // 是确定起始圆弧的位置到终点圆弧的位置 起始圆弧的大小可以是一个点也可以是一个圆，主要看半径的大小，起始圆弧的颜色就是addcolor的0.0的颜色，终点圆弧外的颜色是addcolor 1.0的颜色
+        grd.addColorStop(0.0,'#fff'); //设置每个转换阶段的颜色
+        grd.addColorStop(0.5,'#ff6000');//设置每个转换阶段的颜色
+        grd.addColorStop(1.0,'#ff00d8');//设置每个转换阶段的颜色
+        cxt.rect(0,0,600,600);  //如果绘制图形的起始坐标大于或者是小于渐变的起始位置或者终点位置 就分别从中间截取或者添加纯色
+        cxt.fillStyle=grd; //讲渐变添加到绘制的图形中
+        cxt.fill();
+        */
+
+ //  ----  使用图片创建画布  ---
+        /*
+        var img=new  Image();
+        img.src='pr-cicle.png';
+        console.log(img);
+        img.onload=function(){  //在img加载后再执行下面打代码
+                var grd=cxt.createPattern(img,'repeat'); //createPattern(img or canvas，repeat-style); no-repeat,repeat-x,repeat-y,repeat
+                //  createPattern()的第一个参数可以是渐变 图形 canvas video
+                cxt.rect(0,0,600,600);  //如果绘制图形的起始坐标大于或者是小于渐变的起始位置或者终点位置 就分别从中间截取或者添加纯色
+                cxt.fillStyle=grd; //讲渐变添加到绘制的图形中
+                cxt.fill();
+        };
+        */
+
+ //--- canvas 二次貝赛尔曲线 ---
+        /*
+        *cxt.moveTo(x0,y0);起点
+        *cxt.quadraticCurveTo(
+        * x1,y1,  控制点
+        * x2,y2) 终点*/
+        /*
+        var X0 =400,
+            Y0=20,
+            X1=1000,
+            Y1=400,
+            X2=400,
+            R=10,
+            Y2=800,
+            isDown=false,
+            isNext=true,
+            _e;
+        function SBEcontrol(x0,y0,x1,y1,x2,y2){
+            cxt.clearRect(0,0,1200,1000);
+            //   绘制辅助线
+            x0=x0||X0;
+            y0=y0||Y0;
+            x1=x1||X1;
+            y1=y1||Y1;
+            x2=x2||X2;
+            y2=y2||Y2;
+            cxt.beginPath();
+            cxt.moveTo(x0,y0);
+            cxt.lineTo(x1,y1);
+            cxt.lineTo(x2,y2);
+            cxt.strokeStyle='grey';
+            cxt.stroke();
+            //   绘制圆点
+            cxt.beginPath();
+            cxt.arc(x0,y0,10,0,Math.PI*2,false);
+            cxt.strokeStyle='red';
+            cxt.stroke();
+            cxt.beginPath();
+            cxt.arc(x1,y1,10,0,Math.PI*2,false);
+            cxt.stroke();
+            cxt.beginPath();
+            cxt.arc(x2,y2,10,0,Math.PI*2,false);
+            cxt.stroke();
+            //   绘制弧线
+            cxt.beginPath();
+            cxt.moveTo(x0,y0);
+            cxt.quadraticCurveTo(x1,y1,x2,y2);
+            cxt.strokeStyle='blue';
+            cxt.stroke();
+            console.log(x0+':'+y0+'-'+x1+':'+y1+'-'+x2+':'+y2)
+        }
+        SBEcontrol(X0,Y0,X1,Y1,X2,Y2);
+        window.addEventListener('mousemove',function(e){
+            var x=e.clientX, y= e.clientY;
+            if(X1-R<x<X1+R && Y1-R<y<Y1+R){
+                if(isDown){
+                    X1=e.clientX>=0 ?(e.clientX<=1200? e.clientX : 1200) :0;
+                    Y1=e.clientY>=0 ?(e.clientY<=1000? e.clientY : 1000) :0;
+                    SBEcontrol(X0,Y0,X1,Y1,X2,Y2)
+                }
+            }
+        });
+        window.addEventListener('mousedown',function(e){
+            isDown=true;
+
+        });
+        window.addEventListener('mouseup',function(e){
+            isDown=false;
+        })
+        */
+ // ---- canvas 贝塞尔三次曲线
+        /*cxt.bezierCurveTo(x1,y1,x2,y2,x3,y3);
+        *x0,y0表示第一个控制点
+        *x1,y1表示第二个控制点
+        * x0,y0表示终点 */
+        /*
+        cxt.beginPath();
+        cxt.moveTo(200,200);
+        cxt.lineTo(400,400);
+        cxt.lineTo(700,500);
+        cxt.lineTo(400,900);
+        cxt.strokeStyle='grey';
+        cxt.stroke();
+        cxt.beginPath();
+        cxt.moveTo(200,200); //起点
+        cxt.bezierCurveTo(400,400,700,500,400,900);  //
+        cxt.strokeStyle='blue';
+        cxt.stroke();
+        */
+ // ---- canvas 文字渲染 关于文字的对齐方式 font样式
+        /*
+        * cxt.font='bold 40px arial';  设置字体样式
+        * cxt.fillText(string,x,y,maxLeng);   参数分别是 输入的文字 文字放置的坐标 文本的最大宽度也可以省略
+        * cxt.strokeText(string,x,y,maxLeng) 参数和上面一样 只不过一个是fill()方法一个是stroke()方法
+        * cxt.text
+        */
+        /*
+        cxt.font='bold 20px Arial';
+        cxt.moveTo(400,100);
+        cxt.lineTo(400,180);
+        cxt.stroke();
+        cxt.fillStyle='blue';
+        cxt.textAlign='left';
+        cxt.fillText('canvas测试=canvas测试',400,100);
+        cxt.textAlign='center';
+        cxt.fillText('canvas测试=canvas测试',400,140);
+        cxt.textAlign='right';
+        cxt.fillText('canvas测试=canvas测试',400,180);
+        */
+          //关于textBaseline基线对齐方式 top middle bottom  都是相对于文本设置的坐标
+          //它的取值有 top middle bottom alphabetic ideographic hanging 其中默认值是alphabetic，是针对拉丁文字的对齐方式。
+          //ideographic是针对汉子和日本文字的这种方块文字对齐的。hanging是针对印度文字对齐的。
+        /*
+        cxt.beginPath();
+        cxt.moveTo(0,200);
+        cxt.lineTo(500,200);
+        cxt.stroke(); //参考线
+        cxt.beginPath();
+        cxt.moveTo(0,300);
+        cxt.lineTo(500,300);
+        cxt.stroke();//参考线
+        cxt.beginPath();
+        cxt.moveTo(0,400);
+        cxt.lineTo(500,400);
+        cxt.stroke();//参考线
+        cxt.beginPath();
+        cxt.moveTo(0,500);
+        cxt.lineTo(500,500);
+        cxt.stroke();//参考线
+        cxt.beginPath();
+        cxt.moveTo(0,600);
+        cxt.lineTo(500,600);
+        cxt.stroke();//参考线
+        cxt.beginPath();
+        cxt.moveTo(0,700);
+        cxt.lineTo(500,700);
+        cxt.stroke();//参考线
+        cxt.font='bold 40px Arial';
+        cxt.strokeStyle='blue';
+        cxt.textBaseline='top';
+        cxt.strokeText('canvas文字测试',100,200);
+        cxt.textBaseline='middle';
+        cxt.strokeText('canvas文字测试',100,300);
+        cxt.textBaseline='bottom';
+        cxt.strokeText('canvas文字测试',100,400);
+        cxt.textBaseline='alphabetic';
+        cxt.strokeText('canvasideographic文字测试',100,500);
+        cxt.textBaseline='ideographic';
+        cxt.strokeText('canvasideographic文字测试',100,600);
+        cxt.textBaseline='hanging';
+        cxt.strokeText('canvasideographic文字测试',100,700);
+        */
+         // 文本的度量
+        /*
+        cxt.font='bold 40px Arial';
+        cxt.fillStyle='blue';
+        cxt.fillText('canvasideographic文本度量',100,100);
+
+        var textWidth=cxt.measureText('canvasideographic文本度量').width; //获取文本的宽度 目前只支持获取宽度
+        cxt.fillText('以上字符串的宽度是'+textWidth+'px',100,200);
+        */
+
+
+ //  ---canvas的阴影（任何绘制的图形或者是文本都可以设置阴影） 接口分别是下面几种情况
+        /* cxt.shadowColor 阴影的颜色
+         * cxt.shadowOffsetX 阴影的X位置值，从绘制的起始点开始的X位置，可以是负值
+         * cxt.shadowOffsetY 阴影的Y位置值，从绘制的起始点开始的Y位置，可以是负值
+         * cxt.shadowBlur 阴影的模糊值*/
+        /*
+        cxt.fillStyle='blue';
+        cxt.font='bold 40px Arial';
+        cxt.shadowColor='grey';
+        cxt.shadowOffsetX=0; //从绘制的
+        cxt.shadowOffsetY=20;
+        cxt.shadowBlur=4;
+        cxt.fillText('canvas的阴影接口学习',100,100);
+        */
+ // ---- canvas的globalAlpha canvas的颜色全局透明度 默认是1不透明
+        /*
+        cxt.globalAlpha=0.9;//设置全局的颜色透明度
+        for(var i=0;i<100;i++){
+            var R=Math.floor(Math.random()*255);
+            var G=Math.floor(Math.random()*255);
+            var B=Math.floor(Math.random()*255);
+            cxt.beginPath();
+            cxt.fillStyle='rgb('+R+','+G+','+B+')';
+            console.log(R+'-'+G+'-'+B);
+            cxt.arc(Math.random()*1200,Math.random()*1000,Math.floor(Math.random()*100),0,Math.PI*2,false);
+            cxt.fill();
+        }
+        */
+// ---- canvas的globalCompositeOperation 绘制的图像在重叠产生的效果 默认是后面绘制的图像覆盖前面的
+        /*默认取值是source-over 后面覆盖前面的
+         *其他取值是 destination-over 前面覆盖后面的
+         * 下面还有很多其他的叠加方式 类似于ps的选取叠加*/
+        /*
+        //cxt.globalCompositeOperation='destination-over';
+        //cxt.globalCompositeOperation='destination-in';
+        //cxt.globalCompositeOperation='destination-out';
+        //cxt.globalCompositeOperation='destination-atop';
+        cxt.globalCompositeOperation='lighter';
+        //cxt.globalCompositeOperation='xor';
+        //cxt.globalCompositeOperation='copy';
+        //cxt.globalCompositeOperation='source-in';
+        //cxt.globalCompositeOperation='source-out';
+        //cxt.globalCompositeOperation='source-atop';
+        //cxt.globalCompositeOperation='source-over';
+        cxt.beginPath();
+        cxt.fillStyle='blue';
+        cxt.rect(10,10,300,300);
+        cxt.fill();
+        cxt.beginPath();
+        cxt.moveTo(100,100);
+        cxt.lineTo(400,400);
+        cxt.lineTo(200,600);
+        cxt.fillStyle='red';
+        cxt.fill();
+        cxt.closePath();
+        */
+ // --- canvas剪辑区域 clip();
+        /*
+        cxt.beginPath();
+        cxt.arc(200,200,100,0,Math.PI*2,false);
+        cxt.stroke();
+        cxt.clip();
+        cxt.font='bold 40px Arial';
+        cxt.fillText('canvas的clip()接口学习',200,200);
+        */
+        /*
+        var seachLight={x:400,y:400,r:150,vx:Math.random()*5+10,vy:Math.random()*5+10}
+        setInterval(function(){
+            render();
+            updata();
+        },40);
+        function render(){
+            cxt.clearRect(0,0,1200,1000);
+
+            cxt.beginPath();
+            cxt.rect(0,0,1200,1000);
+            cxt.fillStyle='#000';
+            cxt.fill();
+            cxt.beginPath();
+            cxt.save();
+            cxt.arc(seachLight.x,seachLight.y,seachLight.r,0,Math.PI*2);
+            cxt.fillStyle='#fff';
+            cxt.fill();
+            cxt.clip();
+
+            cxt.beginPath();
+            cxt.font='bold 150px Arial';
+            cxt.fillStyle='blue';
+            cxt.fillText('canvas的clip()接口学习',10,10);
+            cxt.fillText('canvas的clip()接口学习',10,210);
+            cxt.fillText('canvas的clip()接口学习',10,410);
+            cxt.fillText('canvas的clip()接口学习',10,610);
+            cxt.fillText('canvas的clip()接口学习',10,810);
+            cxt.restore();
+        }
+        function updata(){
+            seachLight.x+=seachLight.vx;
+            seachLight.y+=seachLight.vy;
+            if(seachLight.x-seachLight.r<=0){
+                seachLight.vx =-seachLight.vx;
+                seachLight.x=seachLight.r;
+                console.log(1);
+            }
+            if(seachLight.x+seachLight.r>=1200){
+                seachLight.vx =-seachLight.vx;
+                seachLight.x=1200-seachLight.r;
+                console.log(2);
+            }
+            if(seachLight.y-seachLight.r<=0){
+                seachLight.vy =-seachLight.vy;
+                seachLight.y=seachLight.r;
+                console.log(3);
+            }
+            if(seachLight.y+seachLight.r>=1000){
+                seachLight.vy =-seachLight.vy;
+                seachLight.y=1000-seachLight.r;
+                console.log(4);
+            }
+        }
+        */
+ // ---canvas路径(非零环绕原则)（的镂空效果）
+        /*
+        cxt.beginPath();
+        cxt.arc(400,400,200,0,Math.PI*2,false);
+        cxt.arc(400,400,120,0,Math.PI*2,true);
+        cxt.closePath();
+        cxt.fillStyle='red';
+        cxt.shadowColor='grey';
+        cxt.shadowOffsetX=6;
+        cxt.shadowOffsetY=6;
+        cxt.shadowBlur=6;
+        cxt.fill();
+        */
+        /*
+        cxt.beginPath();
+        cxt.rect(20,20,620,620);
+        // 绘制逆时针的矩形
+        cxt.fillStyle='blue';
+        cxt.moveTo(100,100);
+        cxt.lineTo(100,320);
+        cxt.lineTo(520,320);
+        cxt.lineTo(520,100);
+        cxt.lineTo(100,100);
+        // 绘制逆时针的三角形
+        cxt.moveTo(200,420);
+        cxt.lineTo(100,600);
+        cxt.lineTo(300,600);
+        cxt.lineTo(200,420);
+        //绘制逆时针的圆形
+        cxt.arc(500,500,100,0,Math.PI*2,true);
+        cxt.shadowColor='grey';
+        cxt.shadowOffsetX=6;
+        cxt.shadowOffsetY=6;
+        cxt.shadowBlur=6;
+        cxt.fill();
+        cxt.closePath();
+        */
+ // --- canvas 的isPointInPath()方法 测试某点是否在绘制的区域里边
+        /*
+        var balls=[];
+        for(var i=0;i<20;i++){
+            var aBall={ x:Math.random()*1200,y:Math.random()*1000,r:Math.random()*50}
+            balls[i]=aBall;
+        }
+        function draw(){
+            for(var i=0;i<balls.length;i++){
+                cxt.beginPath();
+                cxt.fillStyle='blue';
+                cxt.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2,false);
+                cxt.fill();
+            }
+        }
+        draw();
+        //每次 mouseup的时候根据数组在重新绘制
+        canvas.addEventListener('mouseup',function(e){
+            //getBoundingClientRect()是js的函数 表示获取图形的外边框
+            var x= e.clientX-canvas.getBoundingClientRect().left;
+            var y= e.clientY-canvas.getBoundingClientRect().top;
+            for(var i=0;i<balls.length;i++){
+                cxt.beginPath();
+                cxt.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2,false);
+                if(cxt.isPointInPath(x,y)){
+                    cxt.fillStyle='grey';
+                    cxt.fill();
+                }
+            }
+        });
+        */
+ // --- canvas的扩展功能
+        //canvas的接口 CanvasRenderingContext2D
+        //例如 扩展一个绘制三角形的方法
+        /*
+        CanvasRenderingContext2D.prototype.fillAngle=function(x1,y1,x2,y2,x3,y3){
+            this.beginPath();
+            this.moveTo(x1,y1);
+            this.lineTo(x2,y2);
+            this.lineTo(x3,y3);
+            this.lineTo(x1,y1);
+            this.fill();
+        };
+        cxt.fillStyle='blue';
+        cxt.fillAngle(200,200,100,400,300,400);
+        */
+ // --- canvas 的绘图功能
+        //使用darwImage()
+        /*
+        var img=new Image();
+        img.src='images/1.jpg';
+        img.onload=function(){ //等待img加载完成
+            //cxt.drawImage(img,10,10); //在画布上定位图像：
+            //cxt.drawImage(img,0,0,800,500);//在画布上定位图像，并规定图像的宽度和高度：
+            cxt.drawImage(img,20,20,800,500,30,30,900,600);
+        };
+        */
+ // --- canvas 获取图像像数 getImageData()接口
+        /*
+         *var imgData=cxt.getImageData(x,y,width,height);
+         *其中imageData对象包括width，height，data信息*/
+
+ // --- canvas 设置图像数据 putImageData()接口
+        /*
+        * context.putImageData(imageData, x, y);//将一个已知的imageData放回带canvas画布中的x,y的位置。
+        * context.putImageData(imageData,x,y,dirtyX,dirtyY,dirtyW,dirtyH);
+        * 上面的意思是将imageData中的dirtyX,dirtyY位置开始的dirtyW,dirtyH大小的数据绘制到画布的x+dx,y+dy的位置
+        * 其中和drawImage（）有点像但是后面dirtyX,dirtyY的位移会累加前面的x和y。*/
+
+
+
+
+
+
+
+
+</script>
+
+</html>

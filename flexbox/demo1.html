@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒模型 学习</title>
+    <style>
+        /*示例1*/
+        .vertical-box {
+            display: -webkit-flex;;
+            display: flex;
+            height: 400px;
+            width: 400px;
+            flex-flow: column;
+        }
+        .horizontal-box {
+            display: flex;
+            flex-flow: row;
+        }
+        .spacer {
+            flex: auto;
+            background-color: black;
+        }
+        .centered-element {
+            flex: none;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<!--水平垂直居中一个 元素-->
+<div class="vertical-box">
+    <div class="spacer"></div>
+    <div class="centered-element horizontal-box">
+        <div class="spacer"></div>
+        <div class="centered-element">Centered content</div>
+        <div class="spacer"></div>
+    </div>
+    <div class="spacer"></div>
+</div>
+</body>
+</html>

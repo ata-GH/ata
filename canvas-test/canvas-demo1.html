@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style type="text/css">
+        #controller{
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            background-color: rgba(33,150,243,0.8);
+            width: 300px;
+            height: 100px;
+            border-radius: 0 0 8px 0;
+        }
+        #controller span{
+            float: left;
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 10px;
+            border-radius: 6px;
+        }
+        .canvas-btn{
+            background-color: beige;
+        }
+        h2{
+            margin: 10px 0;
+        }
+        .white-btn{
+            background-color: #fff;
+        }
+        .black-btn{
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+<div id="canvas-wrapper">
+    <canvas id="canvas"></canvas>
+    <div id="controller">
+        <h2>canvas 绘图</h2>
+        <span class="canvas-btn">停止运动</span>
+        <span class="white-btn"></span>
+        <span class="black-btn"></span>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var canvas=document.getElementById('canvas');
+    var cxt=canvas.getContext('2d');
+    canvas.width=1800;
+    canvas.height=1000;
+    var balls=[];
+    var moving=true;
+    var bg='#fff';
+    var color=['#f4c32a','#ababab','#303fce','#e62344','#33ad0e','#0f77a2','#ffde9c'];
+    for(var i=0;i<100;i++){
+        var aBall = {
+            x: Math.random()*1200,
+            y: Math.random()*800,
+            r: Math.random()*100,
+            vx: Math.random()*10,
+            vy:Math.random()*10,
+            color: color[Math.ceil(Math.random()*6)]
+        };
+        balls[i]=aBall;
+    }
+    function render(){
+        cxt.clearRect(0,0,1800,1000);
+        cxt.fillStyle=bg;
+        cxt.fillRect(0,0,1800,1000);
+        for(var i=0;i<balls.length;i++){
+            cxt.beginPath();
+            cxt.fillStyle=balls[i].color;
+            cxt.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2);
+            cxt.fill();
+        }
+    }
+    function updata(){
+        for(var i=0;i<balls.length;i++){
+            balls[i].x +=balls[i].vx;
+            balls[i].y +=balls[i].vy;
+            if(balls[i].x-balls[i].r<=0){
+                balls[i].vx =-balls[i].vx;
+                balls[i].x=balls[i].r;
+            }
+            if(balls[i].x+balls[i].r>=1800){
+                balls[i].vx =-balls[i].vx;
+                balls[i].x=1800-balls[i].r;
+            }
+            if(balls[i].y-balls[i].r<=0){
+                balls[i].vy =-balls[i].vy;
+                balls[i].y=balls[i].r;
+            }
+            if(balls[i].y+balls[i].r>=1000){
+                balls[i].vy =-balls[i].vy;
+                balls[i].y=1000-balls[i].r;
+            }
+        }
+    }
+    setInterval(function(){
+        render();
+        if(moving){
+            updata();
+        }
+    },40);
+    var btn=document.getElementsByClassName('canvas-btn');
+    var btn1=document.getElementsByClassName('white-btn');
+    var btn2=document.getElementsByClassName('black-btn');
+    btn[0].onclick=function(){
+        if(moving){
+            btn[0].innerText='继续运动';
+            moving=false;
+        }
+        else{
+            btn[0].innerText='停止运动';
+            moving=true;
+        }
+    };
+    btn1[0].onclick=function(){
+        bg='#fff';
+    };
+    btn2[0].onclick=function(){
+        bg='#000';
+    };
+</script>
+</html>
