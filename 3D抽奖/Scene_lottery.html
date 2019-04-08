@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>{pigcms:$info.title}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/base.css">
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/style.css">
+  <link href="{pigcms::STATICS}/scene/css/index.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/v6_common.css" type="text/css">
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/animate.css" type="text/css">
+  <!-- add -->
+  <link rel="stylesheet" href="{pigcms::STATICS}/3d_lottery_static/css/3d.css">
+  <link rel="stylesheet" href="{pigcms::STATICS}/3d_lottery_static/css/style.css" media="screen" type="text/css">
+  <script src="{pigcms::STATICS}/scene/js/jquery-1.7.2.min.js"></script>
+  <script src="{pigcms::STATICS}/3d_lottery_static/js/jquery.easing.min.js" type="text/javascript"></script>
+  <style type="text/css">
+    .canvas_container{
+      background: url("http://wx.aofaner.com/tpl/static/scene/images/bg.jpg")no-repeat 0 0/cover;
+      background-size: 100% 100%;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 99;
+      display: none;
+    }
+  </style>
+</head>
+<body style="background:url('{pigcms::STATICS}/scene/images/bg.jpg')#000;background-size: cover;" >
+<!-- add -->
+<div class="canvas_container">
+  <div class="container1" style="padding-top: 15px;">
+    <div class="top">
+      <div class="center">
+        <span class="title" style="font-size: 32px;">{pigcms:$info.title}</span>
+      </div>
+    </div>
+  </div>
+  <div style="position: absolute;width: 100%;z-index: 1;">
+    <div style="width: 1024px;position: relative;margin-left: auto;margin-right: auto;">
+      <button id="close-draw" class="kpstartbtn luck-wait lotter-wait">停止</button>
+    </div>
+  </div>
+  <div id="container">
+    <div class="abc" style="overflow: hidden; transform-style: preserve-3d; width: 806px; height: 674px; position: absolute; perspective: 925.9px;">
+    </div>
+  </div>
+  <canvas class="canvas" height="674" width="806"></canvas>
+</div>
+<div class="mark-ewm"></div>
+<!-- end -->
+<div class="huodong_cntaniner">
+  <div class="wrapbg content">
+    <div class="whole">
+      <!-- Header -->
+      <include file="Scene:header"/>
+      <div class="mian mt40 toupiao clearfix ">
+            <span class="span0 awards">
+                        <div class="choulist clearfix">
+                            <input type="text" autocomplete="off" value="{pigcms:$prize[0]['name']}" readonly pid="{pigcms:$prize[0]['id']}" />
+                            <ul>
+                                <volist name="prize" id="vo">
+                                  <li value="{pigcms:$vo.id}">{pigcms:$vo.name}</li>
+                                </volist>
+                            </ul>
+                            <i> <span></span></i></div>
+                    </span>
+        <!----中间部分------>
+        <div class="choujiang">
+          <div class="choujiang_title" style="display:none">
+                    <span class="span0">
+                        <div class="choulist clearfix">
+                            <input type="text" autocomplete="off" value="{pigcms:$prize[0]['name']}" readonly pid="{pigcms:$prize[0]['id']}" />
+                            <ul>
+                                <volist name="prize" id="vo">
+                                  <li value="{pigcms:$vo.id}">{pigcms:$vo.name}</li>
+                                </volist>
+                            </ul>
+                            <i> <span></span></i></div>
+                    </span>
+            <span class="span1"><i>奖品数量：{pigcms:$prize_num}</i></span>
+          </div>
+          <div class="choujiang_content clearfix" >
+
+            <div class="choujiang_l" style="display: none;">
+              <div class="choujiang_img"><img src="<if condition="empty($prize[0]['pic'])">{pigcms::STATICS}/scene/images/12.jpg<else />{pigcms:$prize[0]['pic']}</if>" /></div>
+              <p class="pname">{pigcms:$prize[0]['pname']}</p>
+            </div>
+
+            <div class="choujiang_r">
+              <h5>中奖嘉宾 Lucky Guests</h5>
+              <ul class="award_result_block">
+                <if condition="!empty($prize_users)">
+
+                  <volist name="prize_users" id="user">
+
+                    <li>
+                      <i><?php echo ((count($prize_users)+1)-$i);?></i><em uid="{pigcms:$user.uid}"></em>
+                      <div class="head_img"><img src="{pigcms:$user['portrait']}"></div>
+                      <p>{pigcms:$user['nickname']}</p>
+                    </li>
+                  </volist>
+
+                </if>
+              </ul>
+            </div>
+          </div>
+          <!--抽奖转 begin-->
+          <div class="choujiang_con" id="box">
+            <li>
+              <a href="#">
+                <div class="head_img"><img src="{pigcms::STATICS}/scene/images/12.jpg" /></div>
+                <p>{pigcms:$user['nickname']}</p>
+              </a>
+            </li>
+
+          </div>
+          <!--抽奖转 end-->
+          <div class="choujian_bot clearfix">
+            <div class="choujiang_bot_txt" style="display:none"><span>剩余人数<i>{pigcms:$users}</i></span></div>
+            <div class="choujiang_num" >
+              <div style="display: none;" class="people clearfix" <?php if($prize_num < 1){echo "style='display:none'";}?>>
+              <em>一次抽取</em>
+              <div  class="people_list clearfix">
+                <ul>
+                  <?php
+								if($prize_num < 10){
+									for($i=1;$i<=$prize_num;$i++){
+										if($i == 1){
+											echo "<li class='people_ta'>$i</li>";
+                  }else{
+                  echo "<li>$i</li>";
+                  }
+                  }
+                  }else{
+                  $list = "";
+                  for($i=1;$i<10;$i++){
+                  if($i == 1){
+                  $list .= "<li class='people_ta'>$i</li>";
+                  }else{
+                  $list .= "<li>$i</li>";
+                  }
+                  }
+                  $list .= "<li>全部</li>";
+                  echo $list;
+                  }
+                  ?>
+                </ul>
+                <i> <span></span></i>
+              </div>
+              <em>人</em>
+            </div>
+            <div class="choujiang_re"  id="start">滚动</div>
+            <div class="choujiang_re"  id="stop">停止</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Toolbar -->
+  <include file="Scene:toolbar"/>
+  <!-- Footer -->
+  <include file="Scene:footer"/>
+  <param class="lottery"
+         url-prize="{pigcms::U('Scene/prize_data', array('token'=>$token, 'id'=>$id))}"
+         url-start="{pigcms::U('Scene/get_lottery', array('token'=>$token, 'id'=>$id))}"
+         url-stop="{pigcms::U('Scene/lottery_ok', array('token'=>$token, 'id'=>$id))}"
+         url-del="{pigcms::U('Scene/lottery_del', array('token'=>$token, 'id'=>$id))}"
+  />
+</div>
+<script src="{pigcms::STATICS}/scene/js/scroll-marquee.js"></script>
+<script src="{pigcms::STATICS}/scene/js/jquery.soChange.js"></script>
+<script src="{pigcms::STATICS}/scene/js/jquery.tooltipster.min.js"></script>
+<script src="{pigcms::STATICS}/scene/js/common.js"></script>
+<script src="{pigcms::STATICS}/scene/js/index_copy.js"></script>
+<!-- add -->
+<script src="{pigcms::STATICS}/3d_lottery_static/js/2d.js"></script>
+<script type="text/javascript">
+  var personArray = new Array;
+</script>
+<script src="{pigcms::STATICS}/3d_lottery_static/js/arrfiles.js"></script>
+<script type="text/javascript">
+  QD.Dc.init('.canvas');
+  var placeholder_image_cnt = 9;
+  var placeholder_image_index = 0;
+  var default_placeholder_image = "";
+
+  var edit_personArray = new Array;
+  var placeholder_image = default_placeholder_image;
+  var table = new Array;
+  for (var i = 0; i < 126; i++) {
+    table[i] = new Object();
+    if (i < personArray.length) {
+      table[i] = personArray[i];
+      table[i].src = personArray[i].thumb_image;
+    } else {
+
+      if (placeholder_image_cnt > 0) {
+        if (placeholder_image_index >= placeholder_image_cnt) {
+          placeholder_image_index = 0;
+        }
+
+        placeholder_image = placeholder_image_arr[placeholder_image_index];
+        placeholder_image_index++;
+      }
+      table[i].src = placeholder_image;
+    }
+    table[i].p_x = i % 20 + 1;
+    table[i].p_y = Math.floor(i / 20) + 1;
+  }
+
+  //打乱数组顺序
+  table = table.sort(function () {
+    return Math.random()
+  });
+  // var signwall_show_str = "#torus";
+  // var show_interval = "0";
+  var return_array = new Array();
+
+  function getArrayItems(arr, num) {
+    var temp_array = new Array();
+    for (var index in arr) {
+      temp_array.push(arr[index]);
+    }
+    for (var i = 0; i < num; i++) {
+      if (temp_array.length > 0) {
+        var arrIndex = Math.floor(Math.random() * temp_array.length);
+        return_array[i] = temp_array[arrIndex];
+        temp_array.splice(arrIndex, 1);
+      } else {
+        return false;
+      }
+    }
+    return return_array;
+  }
+  getArrayItems(personArray, 50);
+  window.onload = function () {
+    QD.init();
+  }
+  function opening() {
+    transform(targets.grid, 50, 'grid', 20000);
+    $('#container').show();
+  }
+  function closeing() {
+    TWEEN.removeAll();
+    $("div").remove(".element");
+    $('#container').hide();
+  }
+  var newPic = new Array(),
+    signNo = 0,
+    name, qdword;
+  setInterval(function () {
+    if (newPic.length > 0) {
+      var firstInfo = newPic.shift();
+      // console.log(newPic.length);
+      var showImg = firstInfo.image;
+      name = firstInfo.name;
+      qdword = firstInfo.qdword;
+      personArray.push(firstInfo);
+      $('.element').eq(personArray.length - 1).find('img').attr('src', showImg);
+    }
+    getArrayItems(personArray, 50);
+  }, 8000);
+</script>
+<script src="{pigcms::STATICS}/3d_lottery_static/js/three_3d.js"></script>
+<script src="{pigcms::STATICS}/3d_lottery_static/js/tween.min.js"></script>
+<script src="{pigcms::STATICS}/3d_lottery_static/js/CSS3DRenderer.js"></script>
+<script src="{pigcms::STATICS}/3d_lottery_static/js/3d.js"></script>
+<script type="text/javascript">
+  var awardUser = {};
+  showPrizeIn = function (savatar, sname) {
+    $(".mark-ewm").show();
+    s = $(".drawbox"),
+      l = ($(window).width() - 298) / 2;
+    c = ($(window).height() - 298) / 2 + $(document).scrollTop();
+    html = '';
+    html = '<div class="prizeIn" ><img class="tou" src="' + savatar + '"><p>' + sname + '</p>';
+    html +=
+      '<img class="honor" src="/tpl/static/3d_lottery_static/img/ribbon.png"/><div class="rays"></div></div>';
+    $("body").append(html);
+    $(".prizeIn").animate({
+      left: l + "px",
+      top: c + "px",
+      width: "298px",
+      height: "298px"
+    }, {
+      easing: "easeInExpo",
+      duration: 500,
+      complete: function () {
+        $(".prizeIn .rays,.prizeIn .honor,.prizeIn .crown,.prizeIn p").css("display",
+          "block")
+        setTimeout(function () {
+          $(".prizeIn .rays,.prizeIn .honor,.prizeIn p,.prizeIn crown").css(
+            "display", "none");
+          var s = $(".lottery-avatar").first().width();
+          var p = $(window).width();
+          s || (s = 216);
+          var l, c, u = s + "px",
+            h = ($(".lottery-crown img").first().width() + "px", $(
+              ".lottery-crown img").first().height() + "px", $(
+              ".lottery-limt").first());
+          "undefined" != typeof h && 0 != h.length ? (l = h.offset().left +
+            "px", c = h.offset().top + "px") : (l = p / 2 - 60 + "px",
+            c = "160px"), $(".prizeIn").animate({
+            left: l,
+            top: c,
+            width: u,
+            height: u
+          }, {
+            easing: "easeInExpo",
+            duration: 500,
+            complete: function () {
+              $(".prizeIn").fadeOut(500), $(".mark-ewm").hide(),
+                $(".prizeIn").remove()
+            }
+          })
+        }, 1e3)
+      }
+    })
+  }
+</script>
+<!-- end -->
+</body>
+</html>

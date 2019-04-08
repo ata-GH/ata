@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="27be5045-ba5e-4a52-87d6-176aec2ac5d6" name="aofaner" url="http://39.104.62.38">
+        <fileTransfer host="39.104.62.38" port="22" rootFolder="/data/webroot/dev.aofanr.com" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

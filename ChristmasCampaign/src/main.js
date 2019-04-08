@@ -3,29 +3,27 @@ import App from './App'
 import router from './router'
 import WX from 'weixin-js-sdk'
 
-// import {GET} from "./api/getData";
+import {GET} from "./api/getData";
 Vue.config.productionTip = false;
 Vue.prototype.$wx = WX;
 router.beforeEach((to, from, next) => {
-    next();
-    return;
-  /*if (to.fullPath !== '/') {
+  // next();
+  // return;
+  if (to.name !== 'last') {
     try {
-      GET('/backstage/is_authenticated/').then((res) => {
-        if (parseInt(res.code) === 0 && res.is_authenticated) {
-          store.commit('saveAdminStatus', {username: res.username, status: res.is_authenticated});
-          // this.saveAdminStatus({username: res.username, status: res.is_authenticated});
-          next()
+      GET('?a=haveFilledForm').then((res) => {
+        if (res.code === 0) {
+          next({name: 'last', params: {id: res.data.gift, result: res.data.bz}})
         } else {
-          next('/')
+          next();
         }
       });
     } catch (e) {
-      next('/')
+      next()
     }
   } else {
     next();
-  }*/
+  }
 });
 new Vue({
   el: '#app',

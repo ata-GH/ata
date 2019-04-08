@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)http://hudong.ourwill.cn/app/index.php?i=2&c=entry&rid=15&do=dpm_choujiang&m=haoman_dpm -->
+<html style="font-size: 50.375px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>3D抽奖 - 韦尔年会</title>
+    <link rel="stylesheet" href="./3d_lottery_static/css/3d.css">
+    <link rel="stylesheet" href="./3d_lottery_static/css/style.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="./3d_lottery_static/css/normalize.css">
+    <script src="./3d_lottery_static/js/index.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./3d_lottery_static/js/jquery.easing.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+        .pre {
+            width: 45px;
+            height: 45px;
+            float: left;
+            margin-top: 35%;
+            display: none;
+        }
+
+        .notpre {
+            width: 45px;
+            height: 45px;
+            float: left;
+            margin-top: 35%;
+        }
+
+        .next {
+            width: 45px;
+            height: 45px;
+            float: right;
+            margin-top: 35%;
+        }
+
+        .notnext {
+            width: 45px;
+            height: 45px;
+            float: right;
+            margin-top: 35%;
+            display: none;
+        }
+
+        .imgshow {
+            width: 220px;
+            height: 220px;
+            margin-top: 30px;
+        }
+
+        body {
+
+            background-image: url(./bg2.jpg);
+
+        }
+
+        .deep-orange {
+            background-color: #ff5722;
+        }
+
+        .kpstartbtn,
+        .kpwall_title {
+            background-color: #ff5722;
+        }
+
+        .container1 .top .center span.title {
+            color: #fff604;
+        }
+    </style>
+</head>
+<body thistype="sign_wall" style="z-index: -2;">
+    <div class="container" style="position: absolute;    z-index: 99999999999999999;">
+        <div class="container1" style="padding-top: 15px;">
+            <div class="top">
+                <div class="center">
+                    <span class="title" style="font-size: 32px;">韦尔年会</span>
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute;width: 100%;z-index: 1;">
+            <div style="width: 1024px;position: relative;margin-left: auto;margin-right: auto;">
+                <button id="close-draw" class="kpstartbtn luck-wait lotter-wait" style="display: none;margin-left: 116px;margin-top: 474px;">停止</button>
+            </div>
+        </div>
+        <div id="wallCont" class="mainwidth" data-modle="wall-modle-cont" style="position: absolute;">
+            <div id="gift-wall-block" class="wall-box none msg-opacity8" style="color: rgb(255, 255, 255); display: block;">
+                <div class="luck-draw">
+                    <div class="custom-bg"></div>
+                    <div class="luck-presz">
+                        <ul id="awardCategoryBox">
+                            <li data-categoryid="47" class="">
+                                <div class="imgbox">
+                                    <img class="pre" src="./3d_lottery_static/img/left.png">
+                                    <img class="notpre" src="./3d_lottery_static/img/not_left.png">
+
+                                    <img class="imgshow" src="./LrYrZ2YSth2hM8YHhMSh8jmM5aj8SD.jpg" alt="">
+
+                                    <img class="next" src="./3d_lottery_static/img/right.png">
+                                    <img class="notnext" src="./3d_lottery_static/img/not_right.png">
+                                </div>
+                                <div class="luck-torryname stellblue-text deep-orange imgName">扫地机器人</div>
+                            </li>
+                            <li data-categoryid="48" class="hidden">
+                                <div class="imgbox">
+                                    <img class="pre" src="./3d_lottery_static/img/left.png">
+                                    <img class="notpre" src="./3d_lottery_static/img/not_left.png">
+
+                                    <img class="imgshow" src="./lfnjDfYYNauf2FS92YZPdfs8a2zft1.jpg" alt="">
+
+                                    <img class="next" src="./3d_lottery_static/img/right.png">
+                                    <img class="notnext" src="./3d_lottery_static/img/not_right.png">
+                                </div>
+                                <div class="luck-torryname stellblue-text deep-orange imgName">平衡车</div>
+                            </li>
+                        </ul>
+
+                        <div class="drawbox">
+                            <div class="draw-contrbox">
+                                <button id="start-draw" class="kpstartbtn luck-wait lotter-wait">开始</button>
+                                <!-- <button id="close-draw" class="kpstartbtn luck-wait lotter-wait" style="display: none">停止</button> -->
+                                <p class="latter-totalnum stellblue-text deep-orange" style="margin-top: 15px;"><span
+                                        class="lotteryUserNum">34</span>人参与
+                                    <span style="margin-left: 50px;font-size: 16px;">一次抽取</span>
+                                    <select name="" id="lotteryNumSel" style="color: #060606;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                    </select>
+                                    <span style="font-size: 16px;">人</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lottery-poper"><a id="trashlottery" class="tooltip tooltipstered"><i class="fa fa-trash fa-fw fa-2x"></i></a>
+                        <p class="lottery-list deep-orange" style="margin-bottom: 15px;">
+                            <!-- <span style="float: left;font-size: 18px;">普通模式</span> -->获奖人数(<b class="winUserNum">8</b>人)<span
+                                class="reset" style="float: right;font-size: 24px;">重置</span></p>
+                        <div class="lottery-box">
+                            <div class="lottery-limt lottery-smallimg" data-id="630" title="向暖" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132.jpg">
+                                </div>
+                                <div class="nickname"><span>向暖</span></div>
+                            </div>
+                            <div class="lottery-limt lottery-smallimg" data-id="\d{3}.jpg" title="Echo" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132(1).jpg">
+                                </div>
+                                <div class="nickname"><span>Echo</span></div>
+                            </div>
+                            <div class="lottery-limt lottery-smallimg" data-id="628" title="海明" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132(2).jpg">
+                                </div>
+                                <div class="nickname"><span>海明</span></div>
+                            </div>
+                            <div class="lottery-limt lottery-smallimg" data-id="627" title="诚" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132(3).jpg">
+                                </div>
+                                <div class="nickname"><span>诚</span></div>
+                            </div>
+                            <div class="lottery-limt lottery-smallimg" data-id="626" title="骆驼祥子" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132(4).jpg">
+                                </div>
+                                <div class="nickname"><span>骆驼祥子</span></div>
+                            </div>
+                            <div class="lottery-limt lottery-smallimg" data-id="625" title="Tarik35" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132(5).jpg">
+                                </div>
+                                <div class="nickname"><span>Tarik35</span></div>
+                            </div>
+                            <div class="lottery-limt lottery-smallimg" data-id="624" title="A张磊" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132(6).jpg">
+                                </div>
+                                <div class="nickname"><span>A张磊</span></div>
+                            </div>
+                            <div class="lottery-limt lottery-smallimg" data-id="622" title="£ai" style="cursor:pointer">
+                                <div class="box">
+                                    <img class="lottery-avatar" src="./132(7).jpg">
+                                </div>
+                                <div class="nickname"><span>£ai</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div id="container" style="display:none;">
+            <div class="abc" style="overflow: hidden; transform-style: preserve-3d; width: 806px; height: 674px; position: absolute; perspective: 925.9px;">
+            </div>
+        </div>
+        <canvas class="canvas" height="674" width="806"></canvas>
+
+        <div class="mark-ewm"></div>
+        <input type="hidden" id="max_id" name="max_id" value="206486">
+        <script type="text/javascript">
+            $('#screen_ecode').on('click', function () {
+                $('#url_code2').toggleClass('hover').css('top', 50);
+            });
+            $('#url_code2').on('click', function () {
+                $('#url_code2').removeClass('hover');
+            });
+            $('#url_code').on('click', function () {
+                $(".mark-ewm").hide();
+                $('#url_code').removeClass('hover');
+            });
+        </script>
+        <script type="text/javascript">
+            var is_show_info = 1;
+            var hFont;
+            (function (doc, win) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        hFont = 20 * (clientWidth / 320);
+                        docEl.style.fontSize = hFont + 'px';
+                    };
+
+                if (!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            })(document, window);
+        </script>
+        <script src="./3d_lottery_static/js/2d.js"></script>
+        <script type="text/javascript">
+            var personArray = new Array;
+            personArray.push({
+                id: 1475,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/R2icLic4uhdXseo8FNtufQeEdXqGNApIo2fIpbk5dVr5pQDRsnAxDp9GZOrkEPGA0BqM1zeFdYEib5gQ9WtL1pfQg/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/R2icLic4uhdXseo8FNtufQeEdXqGNApIo2fIpbk5dVr5pQDRsnAxDp9GZOrkEPGA0BqM1zeFdYEib5gQ9WtL1pfQg/132",
+                name: "诚"
+            });
+            personArray.push({
+                id: 1474,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/1og329Ew7vYUaPfBliajMVZGlzgBUtbGtZNvuibmvjwqBzO8cjiaT3n7VOEkicX2iayibP4IInRLy89VFlsApmNrG5OQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/1og329Ew7vYUaPfBliajMVZGlzgBUtbGtZNvuibmvjwqBzO8cjiaT3n7VOEkicX2iayibP4IInRLy89VFlsApmNrG5OQ/132",
+                name: "海明"
+            });
+            personArray.push({
+                id: 1473,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/sOYOOxpK7wPN2ojibBAfj9niaxxO3NF47Sfagk09JibexfNskicUyfy1JrvNIC3AIvz8iblzGFJhFqRiaqwJ3qwuDWrw/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/sOYOOxpK7wPN2ojibBAfj9niaxxO3NF47Sfagk09JibexfNskicUyfy1JrvNIC3AIvz8iblzGFJhFqRiaqwJ3qwuDWrw/132",
+                name: "Echo"
+            });
+            personArray.push({
+                id: 1472,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIhJR4XUtK5tpOw92BjHOFHFPJkdAK2hAFnqwLu4WqJArqQ2wsMv8CsCKfwM6L5yrCRbbnQFUtNbQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIhJR4XUtK5tpOw92BjHOFHFPJkdAK2hAFnqwLu4WqJArqQ2wsMv8CsCKfwM6L5yrCRbbnQFUtNbQ/132",
+                name: "£ai"
+            });
+            personArray.push({
+                id: 1471,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erqwKXibicAgAbwPQ7uwdiaR1LDr89E378gY0Nhom05WuM3xgNPvUkzJGLibJrkodsoS7iac0tcPDiaj3rw/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erqwKXibicAgAbwPQ7uwdiaR1LDr89E378gY0Nhom05WuM3xgNPvUkzJGLibJrkodsoS7iac0tcPDiaj3rw/132",
+                name: "浅浅的微笑"
+            });
+            personArray.push({
+                id: 1233,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/ba50c2I3ibEf1JnkibksQZe24h9EhOdPwYvPHdUDp44hXLyosqr2vgV0wImG1KeN4qwFMicICaMlibichZAHznmCTuQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/ba50c2I3ibEf1JnkibksQZe24h9EhOdPwYvPHdUDp44hXLyosqr2vgV0wImG1KeN4qwFMicICaMlibichZAHznmCTuQ/132",
+                name: "何人Love连"
+            });
+            personArray.push({
+                id: 1232,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/UW1XliaLCzibmOvhcfWMyIEvPbCe6jE1U6ichysBmvGRRQlOS2oicbT2Ful8tREfBr2og04kjSg233WZCfibO5Ctzng/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/UW1XliaLCzibmOvhcfWMyIEvPbCe6jE1U6ichysBmvGRRQlOS2oicbT2Ful8tREfBr2og04kjSg233WZCfibO5Ctzng/132",
+                name: "梅梅"
+            });
+            personArray.push({
+                id: 1231,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83errHCd8Gycgy5aOiayAjbZJ5kGplia9eWQjicgtibNKvm551pC4AGTsoDzHzcsvhv2UhbPQiaRicnw7oLzA/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83errHCd8Gycgy5aOiayAjbZJ5kGplia9eWQjicgtibNKvm551pC4AGTsoDzHzcsvhv2UhbPQiaRicnw7oLzA/132",
+                name: "骆驼祥子"
+            });
+            personArray.push({
+                id: 1216,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/XfeZMk5t5JNFiaeo8pOkhK3YecomA7g2pFesFPh2Dic3Xrh5IDOFm6zgLCJ6f2wPWcRQCZg5fzsflWFA6nD7VH3Q/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/XfeZMk5t5JNFiaeo8pOkhK3YecomA7g2pFesFPh2Dic3Xrh5IDOFm6zgLCJ6f2wPWcRQCZg5fzsflWFA6nD7VH3Q/132",
+                name: "小八点"
+            });
+            personArray.push({
+                id: 1215,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIGuTphc21eMdFkxCc8bkPibAaAXKRg6cxCaVms4sE8kVuz3vVLymJT9uHTXniaXS9y7SGBZnswX2iag/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIGuTphc21eMdFkxCc8bkPibAaAXKRg6cxCaVms4sE8kVuz3vVLymJT9uHTXniaXS9y7SGBZnswX2iag/132",
+                name: "非烦  13656964114"
+            });
+            personArray.push({
+                id: 1213,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epMxjWcaLsLMibndJ4LvdIOyvZW6dSCV6XJ1KYEfmiabsQ6oryicUZkzlmPnicg5icka6sL9HffciaiamzQA/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epMxjWcaLsLMibndJ4LvdIOyvZW6dSCV6XJ1KYEfmiabsQ6oryicUZkzlmPnicg5icka6sL9HffciaiamzQA/132",
+                name: "中医理疗王培英"
+            });
+            personArray.push({
+                id: 1212,
+                image: "http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM7nePNYicSZFxhE1FpMkjAAGRDs7ydAVKltUC47SzHaqQic9ZK8uWcHmnEEnC36D9rY1B3WHEA782cq3HkKOQZlRlxUyp8icvf2wI/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM7nePNYicSZFxhE1FpMkjAAGRDs7ydAVKltUC47SzHaqQic9ZK8uWcHmnEEnC36D9rY1B3WHEA782cq3HkKOQZlRlxUyp8icvf2wI/132",
+                name: "佳"
+            });
+            personArray.push({
+                id: 1211,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/8EnFRvtQy6B5nQCeibEhgP5aVagrYo3svG1SmInscAwLLVgLF4Q0g9McAEnfcaWDhhpdLmricsRC1JlegLE0qHEQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/8EnFRvtQy6B5nQCeibEhgP5aVagrYo3svG1SmInscAwLLVgLF4Q0g9McAEnfcaWDhhpdLmricsRC1JlegLE0qHEQ/132",
+                name: "刀刀"
+            });
+            personArray.push({
+                id: 1199,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ42ZNRtBCLSbibUrJAXf7hibuSBDLSG8ecAgF090SpysOicLAed97ticwYhnSxg1hBuDWFKWhC4pTYmA/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ42ZNRtBCLSbibUrJAXf7hibuSBDLSG8ecAgF090SpysOicLAed97ticwYhnSxg1hBuDWFKWhC4pTYmA/132",
+                name: "张妍"
+            });
+            personArray.push({
+                id: 1196,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epr5wXoiblxvuibE0Xeo2F71M9X7eVU2ibImL0ARpiaVILiaibaXnpqicGC4Il3kKWvSLCIpKJjiaM3IgLLNg/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epr5wXoiblxvuibE0Xeo2F71M9X7eVU2ibImL0ARpiaVILiaibaXnpqicGC4Il3kKWvSLCIpKJjiaM3IgLLNg/132",
+                name: "奥盛国际跆拳道新华馆田磊"
+            });
+            personArray.push({
+                id: 1195,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eolVzdrhxyY39geMP1el4M1UVrrBQBicmk0EkffZfwtE24mOKs1V7pGeZCZrZGrusepFzPgV2LlrUA/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eolVzdrhxyY39geMP1el4M1UVrrBQBicmk0EkffZfwtE24mOKs1V7pGeZCZrZGrusepFzPgV2LlrUA/132",
+                name: "晓龙"
+            });
+            personArray.push({
+                id: 1052,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoyz01j5N05e8horXVia3p16CYicpM7nkb1ThgHX7iciaxekLOKmW1tNZxQCYIibEuEIVIvPESIib5Sgdgg/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoyz01j5N05e8horXVia3p16CYicpM7nkb1ThgHX7iciaxekLOKmW1tNZxQCYIibEuEIVIvPESIib5Sgdgg/132",
+                name: "小破孩"
+            });
+            personArray.push({
+                id: 1049,
+                image: "http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM5WicBB3TBROfm0YutucXYicl772KyPnYZtDYsQicFjZUPcXwV0UiafzfCbPYbCLefqYOvCSHWGzc70ag/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM5WicBB3TBROfm0YutucXYicl772KyPnYZtDYsQicFjZUPcXwV0UiafzfCbPYbCLefqYOvCSHWGzc70ag/132",
+                name: "ZeroJie"
+            });
+            personArray.push({
+                id: 737,
+                image: "http://thirdwx.qlogo.cn/mmopen/PiajxSqBRaELibHgINT9Bym6yEFfcbxpxg7iag5MSFObktwyhQ7Jw5gq8UCwsyjQmwkDz9HSEFITswGlof0Fb8LPw/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/PiajxSqBRaELibHgINT9Bym6yEFfcbxpxg7iag5MSFObktwyhQ7Jw5gq8UCwsyjQmwkDz9HSEFITswGlof0Fb8LPw/132",
+                name: "诸葛"
+            });
+            personArray.push({
+                id: 732,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKDMz5BSaVhSl4X0bSOiazj8yP9lM6bB86nH6KfKU7RMsd7kHektBECFfDXDibPia0vY7m8HIMib1nO6g/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKDMz5BSaVhSl4X0bSOiazj8yP9lM6bB86nH6KfKU7RMsd7kHektBECFfDXDibPia0vY7m8HIMib1nO6g/132",
+                name: "Barry117"
+            });
+            personArray.push({
+                id: 731,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ep23Y9uZCEian6Z8Pibng9m4ATWMWkJicZf569dczRicWMKUQ4vRWDdh3rda68jvianVaNLIkqFfKVL4zQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ep23Y9uZCEian6Z8Pibng9m4ATWMWkJicZf569dczRicWMKUQ4vRWDdh3rda68jvianVaNLIkqFfKVL4zQ/132",
+                name: "鼎力主持人王鑫"
+            });
+            personArray.push({
+                id: 730,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/dwP3oJmQJsBbW75buc6JVE5wEzbQIhEQWFmOc2SRJhRIDA2kCRjjGw7qOdvIVlSVXDr0FmfZxVbbM5rFcaibiavQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/dwP3oJmQJsBbW75buc6JVE5wEzbQIhEQWFmOc2SRJhRIDA2kCRjjGw7qOdvIVlSVXDr0FmfZxVbbM5rFcaibiavQ/132",
+                name: "Tarik35"
+            });
+            personArray.push({
+                id: 312,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLC7k9pto5rZUO51MTUibib8QJicCdI9O2kSg0GOocC4DSiabGrXJ9RG1hpZoibhMGA9uqurteo494f5TQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLC7k9pto5rZUO51MTUibib8QJicCdI9O2kSg0GOocC4DSiabGrXJ9RG1hpZoibhMGA9uqurteo494f5TQ/132",
+                name: ""
+            });
+            personArray.push({
+                id: 311,
+                image: "http://thirdwx.qlogo.cn/mmopen/FD2oiadAN5dFNm8dXVvkqcQAnufBUIxePLdIAn1zwap8uZvoxqqf9ZQx4I1rYUIQco7kzy8vG1kuRvpmo8ZRRTdpeh6viacm9k/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/FD2oiadAN5dFNm8dXVvkqcQAnufBUIxePLdIAn1zwap8uZvoxqqf9ZQx4I1rYUIQco7kzy8vG1kuRvpmo8ZRRTdpeh6viacm9k/132",
+                name: "Nicole"
+            });
+            personArray.push({
+                id: 310,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/lauNNcuJ32xstrybf4MZUwAR6ZgAn971vRxNmWVXh2jff6ba1INicVHqsrY0xTwuBRtXswVwkaafBiaZMcZ7Qqiaw/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/lauNNcuJ32xstrybf4MZUwAR6ZgAn971vRxNmWVXh2jff6ba1INicVHqsrY0xTwuBRtXswVwkaafBiaZMcZ7Qqiaw/132",
+                name: "向暖"
+            });
+            personArray.push({
+                id: 309,
+                image: "http://thirdwx.qlogo.cn/mmopen/SQd7RF5caa1OzWYtmT3Fz0SKkxKAAMELfoZnav5RnLX6vxXtmxUyzHZz2JZHnVF45PLCw0GnOf3WibYO7goHofQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/SQd7RF5caa1OzWYtmT3Fz0SKkxKAAMELfoZnav5RnLX6vxXtmxUyzHZz2JZHnVF45PLCw0GnOf3WibYO7goHofQ/132",
+                name: "1314"
+            });
+            personArray.push({
+                id: 308,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epcR3N9QSGibZibh3vic0ueYrnewxvuic2LecgtkY5IZ6FWbnhQhAiaiaElWFx9LUJh6yBBe9NuB3N5foUQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epcR3N9QSGibZibh3vic0ueYrnewxvuic2LecgtkY5IZ6FWbnhQhAiaiaElWFx9LUJh6yBBe9NuB3N5foUQ/132",
+                name: "花朵朵爱美丽"
+            });
+            personArray.push({
+                id: 307,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/xzvmdedS0YTcELnbqgPfuLwXkHEa7ckn0TkNO9UH8cg0v4y56BWJ9BfI0Myl0cia6OJLIjhRWCKXsmNEEic9JtWQ/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/xzvmdedS0YTcELnbqgPfuLwXkHEa7ckn0TkNO9UH8cg0v4y56BWJ9BfI0Myl0cia6OJLIjhRWCKXsmNEEic9JtWQ/132",
+                name: "非"
+            });
+            personArray.push({
+                id: 304,
+                image: "http://thirdwx.qlogo.cn/mmopen/SQd7RF5caa2RS7GtO8niat6bTkDaiaLnms2ibpFU0ia7q3qMooo35R6NejHnXDCMuRA7ibwxM9sAZicRIFiamHf7AL6Ay1xvibDY2ZdO/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/SQd7RF5caa2RS7GtO8niat6bTkDaiaLnms2ibpFU0ia7q3qMooo35R6NejHnXDCMuRA7ibwxM9sAZicRIFiamHf7AL6Ay1xvibDY2ZdO/132",
+                name: "映目直播高利荣"
+            });
+            personArray.push({
+                id: 302,
+                image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLgn2sapwIDfg8mcmiakNg4Hf6bRLnGUNiclgvKDFUOkPrXyolVQfmIOxAKQzkfZwUFXe3a0yjs1hOg/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLgn2sapwIDfg8mcmiakNg4Hf6bRLnGUNiclgvKDFUOkPrXyolVQfmIOxAKQzkfZwUFXe3a0yjs1hOg/132",
+                name: "薄荷"
+            });
+            personArray.push({
+                id: 299,
+                image: "http://thirdwx.qlogo.cn/mmopen/sA31RKTEbW9O6O8m2X0eMribXoC5wiawciamTRKq4vbwZVpNXoiaEe6Wwicd35W5pBw3yIqp5OQtMfxrsczUfdGiaI91eL9xk9Hjtc/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/sA31RKTEbW9O6O8m2X0eMribXoC5wiawciamTRKq4vbwZVpNXoiaEe6Wwicd35W5pBw3yIqp5OQtMfxrsczUfdGiaI91eL9xk9Hjtc/132",
+                name: "别来无恙"
+            });
+            personArray.push({
+                id: 298,
+                image: "http://thirdwx.qlogo.cn/mmopen/sA31RKTEbW9O6O8m2X0eMoJxmRD7h3yrhCY7YaPVJ7GhsgZ3EQR8GtbdCDvobNM41iaARktdg3J5cmNoPWiawIqOV9meR8o9Ky/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/sA31RKTEbW9O6O8m2X0eMoJxmRD7h3yrhCY7YaPVJ7GhsgZ3EQR8GtbdCDvobNM41iaARktdg3J5cmNoPWiawIqOV9meR8o9Ky/132",
+                name: "袁成彬"
+            });
+            personArray.push({
+                id: 297,
+                image: "http://thirdwx.qlogo.cn/mmopen/fUKKg9cS9k79BHLjOn7jSGjY0eS90vWwnOq1JAtBzzuLJR0pqttT3ocicfpibxhrLib1VeEmBOJjicz1a8oA2pH8PW60K870xplb/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/fUKKg9cS9k79BHLjOn7jSGjY0eS90vWwnOq1JAtBzzuLJR0pqttT3ocicfpibxhrLib1VeEmBOJjicz1a8oA2pH8PW60K870xplb/132",
+                name: "A张磊"
+            });
+            personArray.push({
+                id: 296,
+                image: "http://thirdwx.qlogo.cn/mmopen/ajNVdqHZLLCxdhaBQ7yLHsdmpHvdIaBlA75lZWSBqypN40GgspEKXgJftvRwQ4QqhSlGzDJiaVkzNczy5yR2m6w/132",
+                thumb_image: "http://thirdwx.qlogo.cn/mmopen/ajNVdqHZLLCxdhaBQ7yLHsdmpHvdIaBlA75lZWSBqypN40GgspEKXgJftvRwQ4QqhSlGzDJiaVkzNczy5yR2m6w/132",
+                name: "谭谭"
+            });
+        </script>
+        <script src="./3d_lottery_static/js/arrfiles.js"></script>
+        <script type="text/javascript">
+            QD.Dc.init('.canvas');
+            var placeholder_image_cnt = 9;
+            var placeholder_image_index = 0;
+            var default_placeholder_image = "";
+
+            var edit_personArray = new Array;
+            var placeholder_image = default_placeholder_image;
+            var table = new Array;
+            for (var i = 0; i < 126; i++) {
+                table[i] = new Object();
+                if (i < personArray.length) {
+                    table[i] = personArray[i];
+                    table[i].src = personArray[i].thumb_image;
+                } else {
+
+                    if (placeholder_image_cnt > 0) {
+                        if (placeholder_image_index >= placeholder_image_cnt) {
+                            placeholder_image_index = 0;
+                        }
+
+                        placeholder_image = placeholder_image_arr[placeholder_image_index];
+                        placeholder_image_index++;
+                    }
+                    table[i].src = placeholder_image;
+                }
+                table[i].p_x = i % 20 + 1;
+                table[i].p_y = Math.floor(i / 20) + 1;
+            }
+
+            //打乱数组顺序
+            table = table.sort(function () {
+                return Math.random()
+            });
+            var signwall_show_str = "#torus";
+            var show_interval = "0";
+            var return_array = new Array();
+
+            function getArrayItems(arr, num) {
+                var temp_array = new Array();
+                for (var index in arr) {
+                    temp_array.push(arr[index]);
+                }
+                for (var i = 0; i < num; i++) {
+                    if (temp_array.length > 0) {
+                        var arrIndex = Math.floor(Math.random() * temp_array.length);
+                        return_array[i] = temp_array[arrIndex];
+                        temp_array.splice(arrIndex, 1);
+                    } else {
+                        return false;
+                    }
+                }
+                return return_array;
+            }
+            getArrayItems(personArray, 50);
+            window.onload = function () {
+                QD.init();
+            }
+
+            function opening() {
+                transform(targets.grid, 50, 'grid', 20000);
+                $('#container').show();
+            }
+
+            function closeing() {
+                TWEEN.removeAll();
+                $("div").remove(".element");
+                $('#container').hide();
+            }
+
+            var newPic = new Array(),
+                signNo = 0,
+                name, qdword;
+            setInterval(function () {
+                if (newPic.length > 0) {
+
+                    var firstInfo = newPic.shift();
+                    // console.log(newPic.length);
+                    var showImg = firstInfo.image;
+                    name = firstInfo.name;
+                    qdword = firstInfo.qdword;
+
+                    personArray.push(firstInfo);
+
+                    $('.element').eq(personArray.length - 1).find('img').attr('src', showImg);
+                }
+                getArrayItems(personArray, 50);
+            }, 8000);
+        </script>
+        <script src="./three_3d.js"></script>
+        <script src="./3d_lottery_static/js/tween.min.js"></script>
+        <script src="./3d_lottery_static/js/CSS3DRenderer.js"></script>
+        <script src="./3d_lottery_static/js/3d.js"></script>
+        <script type="text/javascript">
+            init();
+            animate();
+        </script>
+        <script type="text/javascript">
+            var stop = false
+            var getAvatar = setInterval(get_new_sign_list, 5000);
+
+            function get_new_sign_list() {
+                var data = {};
+                if (stop) return;
+                stop = true;
+                data.max_id = $('#max_id').val();
+                /* 替换Ajax */
+                setTimeout(function () {
+                    var result = {
+                        ret: 0,
+                        msg: 'success1',
+                        max_id: null,
+                        record: []
+                    }
+                    if (result.max_id) {
+                        $('#max_id').val(result.max_id);
+                    }
+                    if (result.record) {
+                        $.each(result.record, function (key, row) {
+                            var tmp = {
+                                id: row.id,
+                                image: row.avatar,
+                                thumb_image: row.avatar,
+                                name: row.nickname,
+                                qdword: row.qdword
+                            };
+                            var person_info = eval(tmp);
+                            newPic.push(person_info);
+                        });
+
+                    }
+                    stop = false;
+                }, 1000)
+                /*   $.ajax({
+                      url: "./index.php?i=2&c=entry&rid=15&do=dpm_get3dqd&m=haoman_dpm",
+                      dataType: "JSON",
+                      type: "GET",
+                      data: data,
+                      success: function (result) {
+                         
+                      }
+                  }); */
+            }
+            var fansNewData = new Array();
+            var nextFansNewData = new Array();
+            var prevFansNewData = new Array();
+            var award_user = new Array();
+            var showPI = 0;
+            var startGame = false;
+            var overGame = false;
+            var award_id = '';
+            showPrizeIn = function (savatar, sname) {
+                $(".mark-ewm").show();
+                s = $(".drawbox"),
+                    l = ($(window).width() - 298) / 2;
+                c = ($(window).height() - 298) / 2 + $(document).scrollTop();
+                html = '';
+                html = '<div class="prizeIn" ><img class="tou" src="' + savatar + '"><p>' + sname + '</p>';
+                html +=
+                    '<img class="honor" src="./ribbon.png""><div class="rays"></div></div>';
+                $("body").append(html);
+                $(".prizeIn").animate({
+                    left: l + "px",
+                    top: c + "px",
+                    width: "298px",
+                    height: "298px"
+                }, {
+                    easing: "easeInExpo",
+                    duration: 500,
+                    complete: function () {
+                        $(".prizeIn .rays,.prizeIn .honor,.prizeIn .crown,.prizeIn p").css("display",
+                            "block")
+                        setTimeout(function () {
+                            $(".prizeIn .rays,.prizeIn .honor,.prizeIn p,.prizeIn crown").css(
+                                "display", "none");
+                            var s = $(".lottery-avatar").first().width();
+                            var p = $(window).width();
+                            s || (s = 216);
+                            var l, c, u = s + "px",
+                                h = ($(".lottery-crown img").first().width() + "px", $(
+                                    ".lottery-crown img").first().height() + "px", $(
+                                    ".lottery-limt").first());
+                            "undefined" != typeof h && 0 != h.length ? (l = h.offset().left +
+                                "px", c = h.offset().top + "px") : (l = p / 2 - 60 + "px",
+                                c = "160px"), $(".prizeIn").animate({
+                                left: l,
+                                top: c,
+                                width: u,
+                                height: u
+                            }, {
+                                easing: "easeInExpo",
+                                duration: 500,
+                                complete: function () {
+                                    $(".prizeIn").fadeOut(500), $(".mark-ewm").hide(),
+                                        $(".prizeIn").remove(), getAwardsList(
+                                            savatar, sname)
+                                }
+                            })
+                        }, 1e3)
+                    }
+                })
+            }
+
+            function getAwardsList(lavatar, lname) {
+                var i1 = "";
+                i1 += '<div class="lottery-limt lottery-smallimg" title="' + lname + '" style="cursor:pointer">';
+                i1 += '<div class="box">';
+                i1 += '<div class="lottery-remove"><i class="fa fa-times"></i></div>';
+                i1 += '<img class="lottery-avatar" src="' + lavatar + '">';
+                i1 += '<img style="display:none;" class="lottery-avatar" src="">';
+                i1 += "</div>";
+                i1 += '<div class="nickname"><span>' + lname + '</span></div>';
+                i1 += '</div>';
+                $(".lottery-box").append(i1);
+            }
+            $("#start-draw").on('click', function () {
+                gameStart();
+            });
+
+            function gameStart() {
+                //        console.log(1);
+                clearInterval(getAvatar);
+                if (fansNewData.length > 0) {
+                    fansNewData.length = 0;
+                }
+                if (startGame) {
+                    return;
+                }
+                startGame = true;
+                var _award_id = $("#awardCategoryBox li:visible").data("categoryid");
+                var lUserNum = parseInt($('.lotteryUserNum').text());
+                var winUserNum = parseInt($('.winUserNum').text());
+                var lotteryNumSel = parseInt($("#lotteryNumSel").val());
+                console.log(_award_id);
+
+                if (_award_id == '' || _award_id == 0 || _award_id == null) {
+                    alert("还没有设置奖品了!！");
+                    startGame = false;
+                    return
+                }
+                if (winUserNum >= lUserNum) {
+                    alert("已经没有可抽奖的人了!！");
+                    startGame = false;
+                    return
+                }
+                award_id = _award_id;
+                if (lotteryNumSel > (lUserNum - winUserNum)) {
+                    alert("您选择的人数超过可以抽奖的人数！");
+                    startGame = false;
+                    return
+                }
+                $("#wallCont").hide();
+                $("#start-draw").hide();
+
+                opening();
+                var tt = 0;
+                showtx = setInterval(function () {
+                    $('.element').eq(12).find('img').attr('src', personArray[tt].thumb_image);
+                    $('.element').eq(37).find('img').attr('src', personArray[tt].thumb_image);
+                    $('.element').eq(62).find('img').attr('src', personArray[tt].thumb_image);
+                    $('.element').eq(87).find('img').attr('src', personArray[tt].thumb_image);
+                    $('.element').eq(112).find('img').attr('src', personArray[tt].thumb_image);
+                    tt++;
+                    if (tt > 120) {
+                        tt = 0;
+                    }
+
+                }, 50);
+                var winUserNum = $(".winUserNum").text();
+                setTimeout(function () {
+                    var data = {
+                        "ret": 1,
+                        "msg": "success",
+                        "num": 13,
+                        "data": [{
+                            "id": "298",
+                            "avatar": "http:\/\/thirdwx.qlogo.cn\/mmopen\/sA31RKTEbW9O6O8m2X0eMoJxmRD7h3yrhCY7YaPVJ7GhsgZ3EQR8GtbdCDvobNM41iaARktdg3J5cmNoPWiawIqOV9meR8o9Ky\/132",
+                            "from_user": "oQnSOt02nm7BvnygXo3Eg5TY1CXw",
+                            "nickname": "\u8881\u6210\u5f6c",
+                            "realname": "\u8881\u6210\u5f6c",
+                            "address": ""
+                        }]
+                    }
+                   /*  var data = {
+                        i: 2,
+                        c: 'entry',
+                        rid: 15,
+                        do: 'dpm_getchoujiang',
+                        m: 'haoman_dpm',
+                        winUserNum: 10,
+                        lotteryNumSel: 1,
+                        awardid: 47,
+                        iscjnum: 1,
+                    } */
+                    if (data.ret == 1) {
+                        setTimeout(function () {
+                            $('#close-draw').show();
+                        }, 2000);
+                        // console.log(data.data)
+                        fansData = data.data;
+                        award_user = data.data;
+                        fansNum = data.num;
+                        $.each(fansData, function (i, v) {
+                            fansNewData.push(new Array(v['id'], v['avatar'], v['nickname']));
+                        });
+                    } else {
+                        alert("网络参数错误,请刷新页面重试！");
+                        clearInterval(showtx);
+                        closeing();
+                        $("#close-draw").hide();
+                        $("#start-draw").show();
+                        $("#wallCont").show();
+                        startGame = false;
+                    }
+
+                }, 1000)
+                /*  $.ajax({
+                     url: "./index.php?i=2&c=entry&rid=15&do=dpm_getchoujiang&m=haoman_dpm",
+                     dataType: "json",
+                     async: true,
+                     data: {
+                         winUserNum: winUserNum,
+                         lotteryNumSel: lotteryNumSel,
+                         awardid: _award_id,
+                         iscjnum: 1
+                     },
+                     beforeSend: function () {},
+                     success: function (data) {
+                         //                console.log(2)
+                       
+                     },
+                     error: function () {
+                         alert("已经没有人可以抽了?！");
+                         clearInterval(showtx);
+                         closeing();
+                         $("#close-draw").hide();
+                         $("#start-draw").show();
+                         $("#wallCont").show();
+                         startGame = false;
+
+                     },
+                     timeout: 15000
+                 }) */
+            };
+            $('#close-draw').on('click', function () {
+                gameResult();
+                notice_awarduser();
+            });
+            /* @todo  */
+            /* 点击抽奖按钮 获取抽奖结果 */
+            function notice_awarduser() {
+                var _award_id = award_id;
+                $.ajax({
+                    url: "./index.php?i=2&c=entry&rid=15&do=dpm_notice_awarduser&m=haoman_dpm",
+                    dataType: "json",
+                    data: {
+                        awarduser: award_user,
+                        award_id: _award_id
+                    },
+                    beforeSend: function () {},
+                    success: function (data) {
+                        if (data.ret == 1) {
+                            // alert(data.msg);
+                            awarduser = null;
+                            award_id = '';
+                        } else {
+                            //   alert("2");
+                            //                    window.setTimeout('notice_awarduser();', 3000);
+                        }
+                    },
+                    error: function () {
+                        //  alert("2");
+                        //                alert("网络太慢了，获取不到奖品信息！");
+                    },
+                    timeout: 15000
+                })
+                awarduser = null;
+                award_id = '';
+            }
+
+            function gameResult() {
+                if (overGame) {
+                    return;
+                }
+                clearInterval(showtx);
+                overGame = true;
+                showPI = fansData.length - 1;
+                $(".winUserNum").html(fansNum);
+                showPrizeIn(fansNewData[showPI][1], fansNewData[showPI][2]);
+                showGame = setInterval(function () {
+                    if (showPI <= 0) {
+                        clearInterval(showGame);
+                        overGame = false;
+                        startGame = false;
+                        tt = 0;
+                        $("#start-draw").show();
+                    } else {
+                        showPI--;
+                        showPrizeIn(fansNewData[showPI][1], fansNewData[showPI][2]);
+                    }
+                }, 2800);
+                $('#close-draw').hide();
+                closeing();
+                setTimeout(function () {
+
+                    $("#wallCont").show();
+                }, 1000);
+
+
+            }
+            $(".next").on("click", function () {
+                //        if (nextFansNewData.length>0) {
+                nextFansNewData.length = 0;
+                //        }
+                nextFansNewData = [];
+                var J = $("#awardCategoryBox li:visible");
+
+                var G;
+                G = J.next();
+                _award_category_id = G.data("categoryid");
+
+                if (_award_category_id == null) {
+                    $(".next").hide();
+                    $(".notnext").show();
+                    return;
+                }
+                $(".lottery-box").html('');
+                $(".pre").show();
+                $(".notpre").hide();
+
+                $.ajax({
+                    url: "./index.php?i=2&c=entry&rid=15&do=dpm_getCjAwardsList&m=haoman_dpm",
+                    dataType: "json",
+                    data: {
+                        awardid: _award_category_id,
+                    },
+                    beforeSend: function () {
+
+                    },
+                    success: function (data) {
+                        if (data.ret == 1) {
+                            $(".lottery-box").html('');
+                            var nextFansData = data.data;
+                            var nextFansNum = data.num;
+                            $(".winUserNum").html(nextFansNum);
+                            $.each(nextFansData, function (i, v) {
+                                nextFansNewData.push(new Array(v['id'], v['avatar'], v[
+                                    'nickname']));
+                            });
+                            for (var i = 0; i < nextFansData.length; i++) {
+                                getAwardsList(nextFansNewData[i][1], nextFansNewData[i][2]);
+                            }
+
+
+                        }
+
+
+                    },
+                    error: function () {
+                        alert("网络太慢了，获取不到奖品信息！");
+                    },
+                    timeout: 15000
+                })
+
+                G.removeClass("hidden").siblings().addClass("hidden");
+
+            });
+
+            $(".pre").on("click", function () {
+                //    if (prevFansNewData.length>0) {
+                prevFansNewData.length = 0;
+                //  }
+                prevFansNewData = [];
+                var J = $("#awardCategoryBox li:visible");
+                var G;
+                G = J.prev();
+                _award_category_id = G.data("categoryid");
+                if (_award_category_id == null) {
+                    // alert("没奖品了");
+                    $(".notpre").show();
+                    $(".pre").hide();
+                    return;
+                }
+                $(".lottery-box").html('');
+                $(".notnext").hide();
+                $(".next").show();
+                $.ajax({
+                    url: "./index.php?i=2&c=entry&rid=15&do=dpm_getCjAwardsList&m=haoman_dpm",
+                    dataType: "json",
+                    data: {
+                        awardid: _award_category_id,
+                    },
+                    beforeSend: function () {},
+                    success: function (data) {
+                        if (data.ret == 1) {
+                            $(".lottery-box").html('');
+                            var prevFansData = data.data;
+                            var prevFansNum = data.num;
+                            $(".winUserNum").html(prevFansNum);
+                            $.each(prevFansData, function (i, v) {
+                                prevFansNewData.push(new Array(v['id'], v['avatar'], v[
+                                    'nickname']));
+                            });
+                            for (var i = 0; i < prevFansData.length; i++) {
+                                getAwardsList(prevFansNewData[i][1], prevFansNewData[i][2]);
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert("网络太慢了，获取不到奖品信息！");
+                    },
+                    timeout: 15000
+                })
+                G.removeClass("hidden").siblings().addClass("hidden");
+            });
+            $(".reset").on("click", function () {
+                var resetOk = confirm("您确定要重新抽奖，该奖品之前中奖记录将清空！");
+                var reset_award_id = $("#awardCategoryBox li:visible").data("categoryid");
+                if (reset_award_id == '' || reset_award_id == 0) {
+                    alert("参数错误!")
+                    return;
+                }
+                if (resetOk == true) {
+
+                    $.ajax({
+                        url: "./index.php?i=2&c=entry&rid=15&code=reset&do=resetAwards&m=haoman_dpm",
+                        dataType: "json",
+                        data: {
+                            rawardid: reset_award_id,
+                        },
+                        beforeSend: function () {
+
+                        },
+                        success: function (data) {
+                            if (data.ret == 1) {
+                                $(".lottery-box").html('');
+                                $(".winUserNum").html('0');
+                                alert("奖品重置成功，可以重新抽奖了。")
+                            } else {
+                                alert("奖品重置失败，请刷新页面重试。")
+                            }
+                        },
+                        error: function () {
+                            alert("网络太慢了，重置失败！");
+                        },
+                        timeout: 15000
+                    })
+
+                };
+            })
+
+            function spaceStart() {
+                if (!$('#close-draw').is(":hidden")) {
+                    if (overGame) {
+                        return;
+                    }
+                    gameResult();
+                    notice_awarduser();
+                } else {
+                    if (startGame) {
+                        return;
+                    }
+                    gameStart();
+                }
+            }
+            $(document).keydown(function (e) {
+                if (e.which == 32) {
+                    spaceStart();
+                }
+            });
+        </script>
+        <audio src="" preload="auto" id="media" autoplay="autoplay" loop="loop"></audio>
+        <script>
+            ;
+        </script>
+        <script type="text/javascript" src="./index(2).php"></script>
+        <script src="./3d_lottery_static/js/jquery.vedio.js"></script>
+        <script type="text/javascript">
+            $(document).keydown(function (e) {
+                if (e.which == 81) {
+                    if ($('.isfull', window.parent.document).is(":hidden")) {
+                        parent.window.h();
+                        $('.isfull', window.parent.document).show();
+                        $('.nofull', window.parent.document).hide();
+                    } else {
+                        parent.window.b();
+                        $('.isfull', window.parent.document).hide();
+                        $('.nofull', window.parent.document).show();
+                    }
+                }
+
+                if (e.which == 69) {
+                    if ($('.introBox', window.parent.document).is(":hidden")) {
+                        $('.mark-ewm', window.parent.document).show();
+                        $('.introBox', window.parent.document).show();
+                    } else {
+                        $('.mark-ewm', window.parent.document).hide();
+                        $('.introBox', window.parent.document).hide();
+                    }
+                }
+                if (e.which == 65) {
+                    $('#shipingplay', window.parent.document).show();
+                    $('.mark-ewm', window.parent.document).show();
+                    document.getElementById('media').pause();
+                }
+                //        if(e.which == 78) {
+                //            location.href="./index.php?i=2&c=entry&rid=15&do=dpm_dsindex&m=haoman_dpm"
+                //        }
+                //        if(e.which == 79) {
+                //            location.href="./index.php?i=2&c=entry&rid=15&do=dpm_znlindex&m=haoman_dpm"
+                //        }
+                if (e.which == 86) {
+                    $("#framePage").attr("src", "./index.php?i=2&c=entry&rid=15&do=dpm_new_index2&m=haoman_dpm");
+                }
+                if (e.which == 85) {
+                    $("#framePage").attr("src", "./index.php?i=2&c=entry&rid=15&do=dpm_shouqian&m=haoman_dpm");
+                }
+                if (e.which == 80) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_bp&m=haoman_dpm"
+                }
+                if (e.which == 87) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_index&m=haoman_dpm"
+                }
+
+                if (e.which == 82) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_messages&m=haoman_dpm"
+                }
+                if (e.which == 84) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_3dqd&m=haoman_dpm"
+                }
+                if (e.which == 89) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_choujiang&m=haoman_dpm"
+                }
+                if (e.which == 83) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_qianghongbao&m=haoman_dpm"
+                }
+                if (e.which == 71) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_jiabing&m=haoman_dpm"
+                }
+                if (e.which == 68) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_vote&m=haoman_dpm"
+                }
+                if (e.which == 90) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&themes=1&do=dpm_index&m=haoman_dpm"
+                }
+
+                if (e.which == 67) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_wedding&m=haoman_dpm"
+                }
+                if (e.which == 66) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_tanmu&m=haoman_dpm"
+                }
+                if (e.which == 70) {
+                    location.href = "./index.php?i=2&c=entry&rid=15&do=dpm_yyy&m=haoman_dpm"
+                }
+
+            });
+        </script>
+    </div>
+</body>
+
+</html>

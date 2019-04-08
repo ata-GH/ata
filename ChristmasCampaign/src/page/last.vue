@@ -10,18 +10,30 @@
         <span>
           获奖名单请留意近期
           澳贸委Austrade
+          <br/>
           官方微信
         </span>
       </p>
-      <button class="common-btn submit-btn1">分享让好友也来试试</button>
-      <p class="tips-bottom center">选购优质澳大利亚葡萄酒，<a class="mask-btn" @click="mask=true">敬请关注 保乐力加中国</a></p>
+      <button class="common-btn submit-btn1" @click="share=true">分享让好友也来试试</button>
+      <p class="tips-bottom center">{{txt.split('，')[0]}}
+        <a class="mask-btn" @click="mask=true">{{txt.split('，')[1]}}</a></p>
     </div>
+    <!-- 关注公众号弹层 -->
     <div class="mask" v-show="mask">
       <div class="last-mask-content">
-        <img src="../assets/images/code-other.jpg"/>
-        <p>选购优质澳大利亚葡萄酒<br/>
-          敬请关注 保乐力加中国</p>
+        <img :src="'https://dev.aofanr.com/h5/chrismas2018/resources/static/images/giftInfo-chat' + codeWeChat +'.jpg'"/>
+        <p v-html="txt">{{txt.split('，')[0]}}<br/>
+          {{txt.split('，')[1]}}</p>
         <button class="common-btn marginAuto" @click="mask=false">知道了</button>
+      </div>
+    </div>
+    <!-- 指示分享弹层 -->
+    <div class="mask" v-show="share">
+      <div class="last-mask-content1">
+        <p class="share-img"></p>
+        <br/>
+        <br/>
+        <button class="common-btn marginAuto" @click="share=false">知道了</button>
       </div>
     </div>
   </div>
@@ -33,10 +45,22 @@
     data() {
       return {
         id: 1,
-        mask: false
+        codeWeChat: 1,
+        mask: false,
+        share: false,
+        txt: '',
       }
     },
     created() {
+      let arr = ['选购优质的澳大利亚葡萄酒，敬请关注保乐力加中国',
+        '品味地道澳大利亚咖啡，敬请关注高乐雅',
+        '选购优质的澳大利亚创意产品，敬请关注Mood慕咖',
+        '选购美味的澳大利亚麦片产品，敬请关注自由食品freedomfoods',
+        '选购优质的澳大利亚护肤产品，敬请关注Sukin澳洲苏芊'
+      ];
+      this.codeWeChat = this.$route.params.id;
+      this.txt = arr[this.$route.params.id - 1]
+      this.id = this.$route.params.result;
     },
     methods: {},
     mounted(){
@@ -102,5 +126,18 @@
     p{
       padding: .2rem 0;
     }
+  }
+  .last-mask-content1{
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  }
+  .share-img{
+    height: 4.1rem;
+    background: url("../assets/images/share.png")no-repeat center bottom;
+    background-size: 3.21rem auto;
   }
 </style>

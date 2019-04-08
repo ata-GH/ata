@@ -3,14 +3,14 @@
     <div class="center">
       <p class="left-logo"></p>
       <p :class="'right-gift gift'+id"></p>
-      <p class="answer-title iphoneX">{{answerObj.title}}</p>
+      <p class="answer-title iphoneX" v-html="answerObj.title"></p>
       <div class="answer-choice">
         <template v-for="(choice,index) in answerObj.choice">
           <p :class="choice_item === index ? 'choice-item active' : 'choice-item'" @click="choiceHandler(choice,index)">
             {{choice}}</p>
         </template>
       </div>
-      <button class="common-btn marginAuto iphoneX submit-btn" @click="submitAnswer">提交</button>
+      <button class="opacity0 common-btn marginAuto iphoneX submit-btn" @click="submitAnswer">提交</button>
       <p style="height: .1rem;"></p>
     </div>
   </div>
@@ -45,9 +45,14 @@
         this.answerTxt = answerObj.choices[answerObj.answer - 1];
         this.answerObj.title = answerObj.title;
         let arr = [];
-        let UPCASE = ["A.", "B.", "C.", "D."];
+        let UPCASE = ["A. ", "B. ", "C. ", "D. "];
         for (let j = 0; j < 4; j++) {
-          let txt = obj.splice(this.getRandom(obj.length), 1);
+          let txt='';
+          if (parseInt(this.$route.params.id) === 4 || parseInt(this.$route.params.id) === 5) {
+            txt = obj.splice(0, 1);
+          } else {
+            txt = obj.splice(this.getRandom(obj.length), 1);
+          }
           arr.push(UPCASE[j] + txt[0])
         }
         this.answerObj.choice = arr;
@@ -57,6 +62,9 @@
       },
       choiceHandler(choice, index) {
         this.choice_item = index;
+        if (!this.result) {
+          document.getElementsByClassName('submit-btn')[0].className += ' animated slideInUp';
+        }
         if (choice.indexOf(this.answerTxt) > 0) {
           this.result = 'success'
         } else {
@@ -91,11 +99,17 @@
     height: 1.7rem;
     display: inline-block;
     margin-left: .23rem;
+    background-size: 100% auto;
   }
   .answer-title {
+    text-align: left;
     font-size: .15rem;
     line-height: 1.5em;
     padding: 0 8% .1rem 8%;
+    span{
+      display: block;
+      height: .1rem;
+    }
   }
   .choice-item {
     margin: .1rem auto 0 auto;

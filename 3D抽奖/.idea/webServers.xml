@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f5fe94a1-9f24-4275-8d16-d8513e1d39c7" name="澳范儿抽奖" url="">
+        <fileTransfer host="47.92.146.59" port="22" rootFolder="/mnt/www/pigcms/tpl" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

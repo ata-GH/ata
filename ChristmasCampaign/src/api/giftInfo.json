@@ -1,22 +1,37 @@
 {
   "1": {
-    "title": "Jacob’s Creek 杰卡斯珍藏巴罗莎西拉干红葡萄酒（一瓶）",
-    "img": ""
+    "award": "恭喜你！你有机会为好友送出<br/>由 <em>保乐力加中国</em> 提供的<br/><em> Jacob’s Creek 杰卡斯</em><br/>珍藏系列巴罗萨西拉干红葡萄酒",
+    "title": "",
+    "desc": "来自澳大利亚巴罗萨产区，100%设拉子，在橡木桶陈酿 18 个月。酒体饱满，具备大型芳香黑果风味和细微橡木风味，回味丝滑。",
+    "img": "./static/images/giftInfo-img1.png",
+    "chat": "giftInfo-chat1.jpg"
   },
   "2": {
-    "title": "Keepcup慕咖瑞博随行杯，12 OZ（一个）",
-    "img": ""
+    "award": "恭喜你！你有机会为好友送出<br/>由 <em>Gloria Jean's 高乐雅</em> 提供的<br/>马克杯（1只）和餐券（1张）",
+    "title": "餐券只限于 Gloria Jean's 佛山店使用。<br/>地址：佛山市南海区大沥镇联滘滘口路13号永旺梦乐城一楼175号",
+    "desc": "Gloria Jean's 高乐雅源自澳大利亚，是全球咖啡连锁五强之一。Gloria Jean's 高乐雅手托咖啡杯的标识，不仅代表高品质好喝的咖啡，更是高质量和美好生活方式的代名词。 ",
+    "img": "./static/images/giftInfo-img2.png",
+    "chat": "giftInfo-chat2.jpg"
   },
   "3": {
-    "title": "Gloria Jeans 高乐雅马克杯（一个）和餐券（一张）",
-    "img": ""
+    "award": "恭喜你！你有机会为好友送出<br/>由 <em>茂溪商贸</em> 提供的<br/><em>慕咖Keepcup</em> 瑞博随行杯",
+    "title": "12 OZ, 颜色随机（一个）",
+    "desc": "Keepcup诞生于澳大利亚墨尔本，是全球首创符合专业咖啡师标准的随性咖啡杯。 Keepcup 推广环保理念，设计时尚，材质安全，色彩缤纷，获得世界各地消费者的认同。",
+    "img": "./static/images/giftInfo-img3.png",
+    "chat": "giftInfo-chat3.jpg"
   },
   "4": {
-    "title": "Freedom Foods自由食品公司旗下 Barley+品牌谷物棒（一盒），Heritage Mill赫迪庄园品牌早餐全谷物（一包）（口味随机 ）",
-    "img": ""
+    "award": "恭喜你！你有机会为好友送出<br/>由 <em>Freedom Foods自由食品</em> 提供的<br/><em>Barley+品牌</em>谷物棒(1盒) 和 <em>Heritage Mill 赫迪庄园品牌</em> 早餐全谷物(1包)",
+    "title": "",
+    "desc": "自由食品 Freedom Foods 是一家澳大利亚公司，以生产健康美味的食品和饮品闻名全球。品牌主张“优食优造”，让顾客吃得放心。",
+    "img": "./static/images/giftInfo-img4.png",
+    "chat": "giftInfo-chat4.jpg"
   },
   "5": {
-    "title": "Sukin Love Your Skin 苏芊宠爱肌肤套装（泡沫洁面乳125ml，保湿喷雾爽肤水125ml，保湿乳液面霜125ml）（一份）",
-    "img": ""
+    "award": "恭喜你！你有机会为好友送出<br/>由 <em>Sukin 苏芊品牌</em> 提供的<br/>宠爱肌肤套装",
+    "title": "泡沫洁面乳125ml，保湿喷雾爽肤水125ml，保湿乳液面霜125ml",
+    "desc": "Sukin 苏芊是来自澳大利亚的天然护肤品牌，所有产品均由澳大利亚草本植物提取，纯植物配方，不含刺激物质，不含防腐剂。 ",
+    "img": "./static/images/giftInfo-img5.png",
+    "chat": "giftInfo-chat5.jpg"
   }
 }

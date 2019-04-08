@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>{pigcms:$info.title}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/base.css">
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/style.css">
+  <link href="{pigcms::STATICS}/scene/css/index.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/v6_common.css" type="text/css">
+  <link rel="stylesheet" href="{pigcms::STATICS}/scene/css/animate.css" type="text/css">
+</head>
+<!--<body style=" background:#000 url(<?php echo $info['prize_background'] ? $info['prize_background'] : STATICS.'/scene/images/choujiang_background.jpg' ?>);background-size: cover;
+ " >-->
+
+<body style=" background:#000 url('{pigcms::STATICS}/scene/images/bg.jpg');background-size: cover;" >
+<div class="wrapbg content">
+  <div class="whole">
+    <!-- Header -->
+    <include file="Scene:header"/>
+    <div class="mian mt40 toupiao clearfix ">
+            <span class="span0 awards">
+                        <div class="choulist clearfix">
+                            <input type="text" autocomplete="off" value="{pigcms:$prize[0]['name']}" readonly pid="{pigcms:$prize[0]['id']}" />
+                            <ul>
+                                <volist name="prize" id="vo">
+                                  <li value="{pigcms:$vo.id}">{pigcms:$vo.name}</li>
+                                </volist>
+                            </ul>
+                            <i> <span></span></i></div>
+                    </span>
+      <!----中间部分------>
+      <div class="choujiang">
+        <div class="choujiang_title" style="display:none">
+                    <span class="span0">
+                        <div class="choulist clearfix">
+                            <input type="text" autocomplete="off" value="{pigcms:$prize[0]['name']}" readonly pid="{pigcms:$prize[0]['id']}" />
+                            <ul>
+                                <volist name="prize" id="vo">
+                                  <li value="{pigcms:$vo.id}">{pigcms:$vo.name}</li>
+                                </volist>
+                            </ul>
+                            <i> <span></span></i></div>
+                    </span>
+          <span class="span1"><i>奖品数量：{pigcms:$prize_num}</i></span>
+        </div>
+        <div class="choujiang_content clearfix" >
+
+          <div class="choujiang_l" style="display: none;">
+            <div class="choujiang_img"><img src="<if condition="empty($prize[0]['pic'])">{pigcms::STATICS}/scene/images/12.jpg<else />{pigcms:$prize[0]['pic']}</if>" /></div>
+            <p class="pname">{pigcms:$prize[0]['pname']}</p>
+          </div>
+
+          <div class="choujiang_r">
+            <h5>中奖嘉宾 Lucky Guests</h5>
+            <ul>
+              <if condition="!empty($prize_users)">
+
+                <volist name="prize_users" id="user">
+
+                  <li>
+                    <i><?php echo ((count($prize_users)+1)-$i);?></i><em uid="{pigcms:$user.uid}"></em>
+                    <div class="head_img"><img src="{pigcms:$user['portrait']}"></div>
+                    <p>{pigcms:$user['nickname']}</p>
+                  </li>
+                </volist>
+
+              </if>
+            </ul>
+          </div>
+        </div>
+        <!--抽奖转 begin-->
+        <div class="choujiang_con" id="box">
+          <li>
+            <a href="#">
+              <div class="head_img"><img src="{pigcms::STATICS}/scene/images/12.jpg" /></div>
+              <p>{pigcms:$user['nickname']}</p>
+            </a>
+          </li>
+
+        </div>
+        <!--抽奖转 end-->
+        <div class="choujian_bot clearfix">
+          <div class="choujiang_bot_txt" style="display:none"><span>剩余人数<i>{pigcms:$users}</i></span></div>
+          <div class="choujiang_num" >
+            <div style="display: none;" class="people clearfix" <?php if($prize_num < 1){echo "style='display:none'";}?>>
+            <em>一次抽取</em>
+            <div  class="people_list clearfix">
+              <ul class="">
+                <?php
+								if($prize_num < 10){
+									for($i=1;$i<=$prize_num;$i++){
+										if($i == 1){
+											echo "<li class='people_ta'>$i</li>";
+                }else{
+                echo "<li>$i</li>";
+                }
+                }
+                }else{
+                $list = "";
+                for($i=1;$i<10;$i++){
+                if($i == 1){
+                $list .= "<li class='people_ta'>$i</li>";
+                }else{
+                $list .= "<li>$i</li>";
+                }
+                }
+                $list .= "<li>全部</li>";
+                echo $list;
+                }
+                ?>
+              </ul>
+              <i> <span></span></i>
+            </div>
+            <em>人</em>
+          </div>
+          <div class="choujiang_re"  id="start">滚动</div>
+          <div class="choujiang_re"  id="stop">停止</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Toolbar -->
+<include file="Scene:toolbar"/>
+</div>
+<!-- Footer -->
+<include file="Scene:footer"/>
+<param class="lottery"
+       url-prize="{pigcms::U('Scene/prize_data', array('token'=>$token, 'id'=>$id))}"
+       url-start="{pigcms::U('Scene/get_lottery', array('token'=>$token, 'id'=>$id))}"
+       url-stop="{pigcms::U('Scene/lottery_ok', array('token'=>$token, 'id'=>$id))}"
+       url-del="{pigcms::U('Scene/lottery_del', array('token'=>$token, 'id'=>$id))}"
+/>
+<script src="{pigcms::STATICS}/scene/js/jquery-1.7.2.min.js"></script>
+<script src="{pigcms::STATICS}/scene/js/scroll-marquee.js"></script>
+<script src="{pigcms::STATICS}/scene/js/jquery.soChange.js"></script>
+<script src="{pigcms::STATICS}/scene/js/jquery.tooltipster.min.js"></script>
+<script src="{pigcms::STATICS}/scene/js/common.js"></script>
+<script src="{pigcms::STATICS}/scene/js/index.js"></script>
+</body>
+</html>

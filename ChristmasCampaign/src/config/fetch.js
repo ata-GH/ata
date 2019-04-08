@@ -1,9 +1,8 @@
-// import { baseUrl } from './env'
-import {Message} from 'element-ui'
-
 export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 	type = type.toUpperCase();
-	// url = baseUrl + url;
+
+	// url = '/' + url;
+	url = 'https://dev.aofanr.com/h5/chrismas2018/api.php' + url;
 
 	if (type == 'GET') {
 		let dataStr = ''; //数据拼接字符串
@@ -41,24 +40,14 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 			cache: "no-store"
 			// cache: "force-cache"
 		};
-
 		if (type == 'POST') {
 			Object.defineProperty(requestConfig, 'body', {
-        value: urlStringData(data) + '&' + 'csrfmiddlewaretoken=' + window.localStorage.getItem('csrfmiddlewaretoken')
+        value: urlStringData(data)
 			});
-		}
-
+    }
 		try {
 			const response = await fetch(url, requestConfig);
 			const responseJson = await response.json();
-      if(responseJson.code == -1){
-        /* 登录过期情况 */
-        Message({
-          type: 'warning',
-          message: '登录信息已过期,请重新登录'
-        });
-        window.location.href = '/backstage/';
-      }
 			return responseJson
 		} catch (error) {
 			throw new Error(error)
@@ -85,10 +74,6 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 						if (typeof obj !== 'object') {
 							obj = JSON.parse(obj);
 						}
-            if(obj.code == -1){
-              /* 登录过期情况 */
-              window.location.href = '/backstage/';
-            }
 						resolve(obj);
 					} else {
 						reject(requestObj)

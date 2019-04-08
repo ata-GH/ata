@@ -26,6 +26,7 @@ const routes = [
   {
     path: '/',
     component: index,
+    name: 'index'
   },
   {
     path: '/christmas',
@@ -56,7 +57,7 @@ const routes = [
     name: 'giftForm',
     component: giftForm,
   }, {
-    path: '/last/:id',
+    path: '/last/:id/:result',
     name: 'last',
     component: last,
   }
